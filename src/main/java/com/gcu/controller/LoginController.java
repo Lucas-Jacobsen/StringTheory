@@ -16,17 +16,16 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import com.gcu.model.LoginModel;
 import com.gcu.model.OrderModel;
 
-
 @Controller
 @RequestMapping("/login")
-public class CLCLoginController
+public class LoginController
 {
 	@GetMapping("/")
 	public String display(Model model)
 	{
 		//Display Login form view
 		model.addAttribute("Title", "Login Form");
-		model.addAttribute("Login", new LoginModel());
+		model.addAttribute("loginModel", new LoginModel());
 		
 		return "login";
 	}
@@ -41,6 +40,7 @@ public class CLCLoginController
 			model.addAttribute("title", "Login Form");
 			return "login";
 		}
+		
 		
 		
 		//Create products

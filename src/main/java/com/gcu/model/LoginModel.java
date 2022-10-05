@@ -4,7 +4,7 @@ import javax.validation.constraints.NotNull;
 import javax.validation.constraints.Size;
 
 
-public class CLCLoginModel 
+public class LoginModel 
 {
 	@NotNull(message="Username is required field")
 	@Size(min=1, max=32, message="Username must be between 1-32 characters")
@@ -40,7 +40,7 @@ public class CLCLoginModel
 
 
 
-	public CLCLoginModel() {
+	public LoginModel() {
 		super();
 		this.username = username;
 		this.password = password;
