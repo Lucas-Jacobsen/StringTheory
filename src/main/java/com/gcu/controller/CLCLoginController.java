@@ -26,7 +26,7 @@ public class CLCLoginController
 	{
 		//Display Login form view
 		model.addAttribute("Title", "Login Form");
-		model.addAttribute("CLCloginModel", new CLCLoginModel());
+		model.addAttribute("Login", new CLCLoginModel());
 		
 		return "login";
 	}
@@ -41,7 +41,6 @@ public class CLCLoginController
 			model.addAttribute("title", "Login Form");
 			return "login";
 		}
-		
 		
 		
 		//Create products
