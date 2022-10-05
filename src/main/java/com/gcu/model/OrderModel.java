@@ -1,6 +1,6 @@
 package com.gcu.model;
 
-public class CLCProductsModel
+public class OrderModel
 {
 	 Long id = 0L;
 	String orderNum = "";
@@ -8,7 +8,7 @@ public class CLCProductsModel
 	float price = 0.00f;
 	int quantity = 0;
 
-public CLCProductsModel(long id, String orderNum, String productName, float price, int quantity) {
+public OrderModel(long id, String orderNum, String productName, float price, int quantity) {
 	super();
 	this.id = id;
 	this.orderNum = orderNum;
