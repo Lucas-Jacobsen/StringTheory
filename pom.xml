@@ -10,7 +10,7 @@
 	</parent>
 	<groupId>com.gcu</groupId>
 	<artifactId>Milestone-CST-339</artifactId>
-	<version>0.0.1-SNAPSHOT</version>
+	<version>2.5.6</version>
 	<name>Milestone-CST-339</name>
 	<description>Demo project for Spring Boot</description>
 	<properties>
@@ -36,6 +36,15 @@
 			<groupId>org.springframework.boot</groupId>
 			<artifactId>spring-boot-starter-test</artifactId>
 			<scope>test</scope>
+		</dependency>
+		<!-- For Data Validation -->
+		<dependency>
+			<groupId>org.springframework.boot</groupId>
+			<artifactId>spring-boot-starter-validation</artifactId>
+		</dependency>
+		<dependency>
+			<groupId>nz.net.ultraq.thymeleaf</groupId>
+			<artifactId>thymeleaf-layout-dialect</artifactId>
 		</dependency>
 	</dependencies>
 

@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.Tymeleaf.org" xmlns:layout="http:www.ultraq.net.nz/thymeleaf/loyout" layout:decorate="layouts/defaultTemplate">
+	<head>
+		<title>CST-339 Spring Boot Activity Application</title>
+	</head>
+	<body>
+	 <div layout:fragment="content">
+		<table style="width: 50%;">
+			<thead>
+				<tr>
+					<th style="text-align: center;">Order Number</th>
+					<th style="text-align: center;">Product Name</th>
+					<th style="text-align: center;">Price</th>
+					<th style="text-align: center;">Quantity</th>
+				</tr>
+			</thead>
+			<tbody>
+				<tr th:if="${orders.empty}">
+					<td style="text-align: center;">No orders Available</td>
+				</tr>
+				<tr th:each="orders : ${orders}">
+					<td style="text-align: center;">
+						<h5 th:text="${orders.orderNum}">1.00</h5>
+					</td>
+					<td style="text-align: center;">
+						<h5 th:text="${orders.productName}">Product 1</h5>
+					</td>
+					<td style="text-align: center;">
+						<h5 th:text="${orders.price}">1.00</h5>
+					</td>
+					<td style="text-align: center;">
+						<h5 th:text="${orders.quantity}">1</h5>
+					</td>
+					
+					
+				</tr>	
+			</tbody>
+		</table>
+	 </div>
+	</body>
+</html>
+	
+			
