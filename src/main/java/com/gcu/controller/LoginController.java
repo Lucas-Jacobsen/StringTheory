@@ -15,6 +15,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 
 import com.gcu.model.LoginModel;
 import com.gcu.model.OrderModel;
+import com.gcu.model.SignupModel;
 
 @Controller
 @RequestMapping("/login")
@@ -31,7 +32,7 @@ public class LoginController
 	}
 	
 	@PostMapping("/doLogin")
-	public String doLogin(@Valid LoginModel loginModel, BindingResult bindingResult, Model model)
+	public String doLogin(@Valid LoginModel loginModel, BindingResult bindingResult, Model model, @Valid SignupModel signupModel)
 	{
 		
 		//Check for validation order
@@ -40,8 +41,6 @@ public class LoginController
 			model.addAttribute("title", "Login Form");
 			return "login";
 		}
-		
-		
 		
 		//Create products
 		List<OrderModel> orders = new ArrayList<OrderModel>();
@@ -52,7 +51,7 @@ public class LoginController
 		orders.add(new OrderModel(5L, "000005", "Product 5", 5.00f, 5));
 		
 		//Display orders view
-		model.addAttribute("title", "My Orders");
+		model.addAttribute("title", "Our Products");
 		model.addAttribute("orders", orders);
 		
 		return "orders";
