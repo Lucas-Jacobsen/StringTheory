@@ -56,7 +56,7 @@
 						</td>
 					</tr>
 					<tr>
-						<td style="text-align:center" colspan="2"><input type="submit" value="Submit"></td>
+						<td style="text-align:center" colspan="2" ><input type="submit" value="Submit"></td>
 					</tr>
 				</table>
 				<div th:if="${#fields.hasErrors('*')}">List of Errors</div>
@@ -64,7 +64,10 @@
 					<span style="color: red;" th:text="${err}" class=fieldError></span>
 			</form><br>
 				<h6 class="display-4" style=font-size:25px>Don't have an account? Sign-up Now!</h6>
-				<button type="button" class="btn btn-secondary btn-lg">Register</button>
+				
+				<form action ="#" th:action= "@{doSignin}" method="post">
+					<td style="text-align:center" colspan="2" ><input type="Submit" value="Submit"></td>
+				</form>
 
 		</div>
 	</div>

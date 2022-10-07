@@ -30,6 +30,15 @@ public class LoginController
 			
 		return "welcome";
 	}
+	@GetMapping("/Signup")
+	public String doSignin(Model model)
+	{
+		model.addAttribute("Title", "Signup Form");
+		model.addAttribute("SignupModel", new SignupModel());
+		
+
+		return "login";
+	}
 	
 	@PostMapping("/doLogin")
 	public String doLogin(@Valid LoginModel loginModel, BindingResult bindingResult, Model model)
@@ -39,7 +48,7 @@ public class LoginController
 		if(bindingResult.hasErrors())
 		{
 			model.addAttribute("title", "Login Form");
-			return "login";
+			return "welcome";
 		}
 		
 		//Create products
