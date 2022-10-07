@@ -27,12 +27,12 @@ public class LoginController
 		//Display Login form view
 		model.addAttribute("Title", "Login Form");
 		model.addAttribute("loginModel", new LoginModel());
-		
-		return "login";
+			
+		return "welcome";
 	}
 	
 	@PostMapping("/doLogin")
-	public String doLogin(@Valid LoginModel loginModel, BindingResult bindingResult, Model model, @Valid SignupModel signupModel)
+	public String doLogin(@Valid LoginModel loginModel, BindingResult bindingResult, Model model)
 	{
 		
 		//Check for validation order
@@ -56,5 +56,10 @@ public class LoginController
 		
 		return "orders";
 	}	
+	
+
+	
+	
+	
 	
 }

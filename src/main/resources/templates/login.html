@@ -19,43 +19,19 @@
 					<form action="#" th:action="@{doLogin}" th:object="${loginModel}" method="post">
 						<table>
 							<tr>
-								<td> First Name: </td>
+								<td> User Name: </td>
 								<td><input type="text" th:field="*{username}"></td>
 								<td>
-									<!-- <h5 style="color: red;" th:if="${#fields.hasErrors('firstName')}"
-										th:errors="*{firstName}">Username Error</h5> -->
-								</td>
-							</tr>
-							<tr>
-								<td>Last Name: </td>
-								<td><input type="text" th:field="*{username}"></td>
-								<td>
-										<!--<h5 style="color: red;" th:if="${#fields.hasErrors('lastName')}"
-										th:errors="*{lastName}">Password Error</h5> -->
-								</td>
-							</tr>
-							<tr>
-								<td>Email: </td>
-								<td><input type="email" th:field="*{username}"></td>
-								<td>
-									<!--<h5 style="color: red;" th:if="${#fields.hasErrors('email')}"
-										th:errors="*{email}">Password Error</h5> -->
-								</td>
-							</tr>
-							<tr>
-								<td>Username: </td>
-								<td><input type="username" th:field="*{username}"></td>
-								<td>
-									<!-- <h5 style="color: red;" th:if="${#fields.hasErrors('username')}"
-										th:errors="*{username}">Password Error</h5> -->
+									<h5 style="color: red;" th:if="${#fields.hasErrors('username')}"
+										th:errors="*{username}">Username Error</h5>
 								</td>
 							</tr>
 							<tr>
 								<td>Password: </td>
 								<td><input type="password" th:field="*{password}"></td>
 								<td>
-									<!--<h5 style="color: red;" th:if="${#fields.hasErrors('password')}"
-										th:errors="*{password}">Password Error</h5> -->	
+									<h5 style="color: red;" th:if="${#fields.hasErrors('password')}"
+										th:errors="*{password}">Password Error</h5>
 								</td>
 							</tr>
 							<tr>

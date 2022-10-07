@@ -1,10 +1,13 @@
 <!DOCTYPE html>
-<html xmlns:th="http://www.Tymeleaf.org" xmlns:layout="http:www.ultraq.net.nz/thymeleaf/loyout" layout:decorate="layouts/defaultTemplate">
-	<head>
-		<title>Guitars</title>
-	</head>
-	<body style=background-color:#F1F1F1>
-	 <div layout:fragment="content">
+<html xmlns:th="http://www.Tymeleaf.org" xmlns:layout="http:www.ultraq.net.nz/thymeleaf/layout"
+	layout:decorate="layouts/defaultTemplate">
+
+<head>
+	<title>Guitars</title>
+</head>
+
+<body style=background-color:#F1F1F1>
+	<div layout:fragment="content">
 		<table style="width: 50%;">
 			<thead>
 				<tr>
@@ -31,13 +34,60 @@
 					<td style="text-align: center;">
 						<h5 th:text="${orders.quantity}">1</h5>
 					</td>
-				</tr>	
+				</tr>
 			</tbody>
 		</table>
-		
-	 </div>
-	 
-	</body>
+
+		<div class="container">
+			<div class="row">
+				<div class="col">
+					<div class="card" style="width: 18rem;">
+						<img th:src="@{/images/String.png}" class="card-img-top" alt="...">
+						<div class="card-body">
+							<h5 class="card-title">Product 1</h5>
+							<p class="card-text">This is a description of product 1 the image size is 200px by 200px.
+							</p>
+							<a href="#" class="btn btn-primary">Go somewhere</a>
+						</div>
+					</div>
+				</div>
+				<div class="col">
+					<div class="card" style="width: 18rem;">
+						<img th:src="@{/images/String.png}" class="card-img-top" alt="...">
+						<div class="card-body">
+							<h5 class="card-title">Product 1</h5>
+							<p class="card-text">This is a description of product 1 the image size is 200px by 200px.
+							</p>
+							<a href="#" class="btn btn-primary">Go somewhere</a>
+						</div>
+					</div>
+				</div>
+				<div class="col">
+					<div class="card" style="width: 18rem;">
+						<img th:src="@{/images/String.png}" class="card-img-top" alt="...">
+						<div class="card-body">
+							<h5 class="card-title">Product 1</h5>
+							<p class="card-text">This is a description of product 1 the image size is 200px by 200px.
+							</p>
+							<a href="#" class="btn btn-primary">Go somewhere</a>
+						</div>
+					</div>
+				</div>
+				<div class="col">
+					<div class="card" style="width: 18rem;">
+						<img th:src="@{/images/String.png}" class="card-img-top" alt="...">
+						<div class="card-body">
+							<h5 class="card-title">Product 1</h5>
+							<p class="card-text">This is a description of product 1 the image size is 200px by 200px.
+							</p>
+							<a href="#" class="btn btn-primary">Go somewhere</a>
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+
+</body>
+
 </html>
-	
-			
