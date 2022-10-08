@@ -37,7 +37,7 @@ public class LoginController
 		model.addAttribute("SignupModel", new SignupModel());
 		
 
-		return "signIn";
+		return "signin";
 	}
 	
 	@PostMapping("/doLogin")
@@ -65,6 +65,11 @@ public class LoginController
 		
 		return "orders";
 	}	
+	
+		
+	
+	
+	
 	
 	
 
