@@ -30,7 +30,7 @@ public class LoginController
 			
 		return "welcome";
 	}
-	@PostMapping("/doSignin")
+	@PostMapping("/doSignup")
 	public String doSignin(Model model)
 	{
 		model.addAttribute("Title", "Signup Form");
