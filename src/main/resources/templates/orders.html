@@ -44,69 +44,21 @@
 					<div class="card" style="width: 18rem;">
 						<img th:src="@{/images/electricGuitar.jpg}" class="card-img-top" alt="electric pic">
 						<div class="card-body">
-<<<<<<< Upstream, based on branch 'main' of https://github.com/cfirnkoess1/CST-Milestone-339.git
-							<h5 class="card-title">Electric Guitars</h5>
-							<p class="card-text">For any and all of your amplified needs!
-=======
-							<h5 class="card-title" >Product 1</h5>
-							<p class="card-text">This is a description of product 1 the image size is 200px by 200px.
-							</p>
+							<h5 class="card-title" th:text="${products[0].productName}" >Electric Guitars</h5>
+							<p class="card-text" th:text="${products[0].productPrice.toString()}"> Description 1</p>
 							<a href="#" class="btn btn-primary">Purchase</a>
 						</div>
 					</div>
 				</div>
+				
 				<div class="col">
-					<div class="card" style="width: 18rem;">
-						<img th:src="@{/images/String.png}" class="card-img-top" alt="...">
-						<div class="card-body">
-							<h5 class="card-title">Product 1</h5>
-							<p class="card-text">This is a description of product 1 the image size is 200px by 200px.
-							</p>
-							<a href="#" class="btn btn-primary">Purchase</a>
-						</div>
-					</div>
-				</div>
-				<div class="col">
-					<div class="card" style="width: 18rem;">
-						<img th:src="@{/images/String.png}" class="card-img-top" alt="...">
-						<div class="card-body">
-							<h5 class="card-title">Product 1</h5>
-							<p class="card-text">This is a description of product 1 the image size is 200px by 200px.
-							</p>
-							<a href="#" class="btn btn-primary">Purchase</a>
-						</div>
-					</div>
-				</div>
-				<div class="col">
-					<div class="card" style="width: 18rem;">
-						<img th:src="@{/images/String.png}" class="card-img-top" alt="...">
-						<div class="card-body">
-							<h5 class="card-title">Product 1</h5>
-							<p class="card-text">This is a description of product 1 the image size is 200px by 200px.
-							</p>
-							<a href="#" class="btn btn-primary">Purchase</a>
-						</div>
-					</div>
-				</div><div class="col">
-					<div class="card" style="width: 18rem;">
-						<img th:src="@{/images/String.png}" class="card-img-top" alt="...">
-						<div class="card-body">
-							<h5 class="card-title">Product 1</h5>
-							<p class="card-text">This is a description of product 1 the image size is 200px by 200px.
->>>>>>> a6cbc63 Visuals
-							</p>
-							<a href="#" class="btn btn-primary">Browse</a>
-						</div>
-					</div>
-				</div>
-				<div class="col">
-					<div class="card" style="width: 18rem;">
+					<div class="card" style="width: 18rem; padding-bottom:15px">
 						<img th:src="@{/images/acousticGuitarA.jpg}" class="card-img-top" alt="acoustic pic">
 						<div class="card-body">
-							<h5 class="card-title">Acoustic Guitars</h5>
-							<p class="card-text">Look no further for the best acoustics on the market.
+							<h5 class="card-title" th:text="${products[1].productName}" >Acoustic Guitars</h5>
+							<p class="card-text" th:text="${products[1].productPrice.toString()}" >Look no further for the best acoustics on the market.
 							</p>
-							<a href="#" class="btn btn-primary">Browse</a>
+							<a href="#" class="btn btn-primary">Purchase</a>
 						</div>
 					</div>
 				</div>
@@ -114,11 +66,11 @@
 					<div class="card" style="width: 18rem;">
 						<img th:src="@{/images/bassGuitar.jpg}" class="card-img-top" alt="bass picture">
 						<div class="card-body">
-							<h5 class="card-title">Bass Guitars</h5>
-							<p class="card-text">Play those low notes in style...<br>
+							<h5  th:text="${products[2].productName}" class="card-title">Bass Guitars</h5>
+							<p class="card-text" th:text="${products[2].productPrice.toString()}" >Play those low notes in style...<br>
 							
 							</p>
-							<a href="#" class="btn btn-primary">Browse</a>
+							<a href="#" class="btn btn-primary">Purchase</a>
 						</div>
 					</div>
 				</div>
@@ -126,17 +78,18 @@
 					<div class="card" style="width: 18rem;">
 						<img th:src="@{/images/amplifier.jpg}" class="card-img-top" alt="amp picture">
 						<div class="card-body">
-							<h5 class="card-title">Amplifiers</h5>
-							<p class="card-text">Get Loud. As loud as possible!
+							<h5 class="card-title" th:text="${products[3].productName.toString()}" >$Amplifiers</h5>
+							<p class="card-text" th:text="${products[3].productPrice.toString()}" >Get Loud. As loud as possible!
 							</p>
-							<a href="#" class="btn btn-primary">Browse</a>
+							<a href="#" class="btn btn-primary">Purchase</a>
 						</div>
 					</div>
+					<br><br><br>
 				</div>
 			</div>
 		</div>
 	</div>
-
+	
 </body>
 
 </html>
