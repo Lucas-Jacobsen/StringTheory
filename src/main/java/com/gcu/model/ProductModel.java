@@ -1,5 +1,6 @@
 package com.gcu.model;
 
+//Initializes product model variables
 public class ProductModel {
 
 	int productID = 0;
@@ -7,6 +8,7 @@ public class ProductModel {
 	String productDescription = " ";
 	float productPrice = 0.00f;
 
+	//creates the product model
 	public ProductModel(int productID, String productName, String productDescription, float productPrice) {
 		super();
 		this.productID = productID;
@@ -15,6 +17,7 @@ public class ProductModel {
 		this.productPrice = productPrice;
 	}
 
+	//getters and setters for the product model
 	public int getProductID() {
 		return productID;
 	}

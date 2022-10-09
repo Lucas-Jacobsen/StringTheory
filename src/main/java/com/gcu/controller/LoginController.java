@@ -18,19 +18,22 @@ import com.gcu.model.OrderModel;
 import com.gcu.model.ProductModel;
 import com.gcu.model.SignupModel;
 
+//controller for the first welcome page
 @Controller
 @RequestMapping("/login")
 public class LoginController
 {
+	//second backslash comes after the first login so we can have a welcome page
 	@GetMapping("/")
 	public String display(Model model)
 	{
 		//Display Login form view
 		model.addAttribute("Title", "Login Form");
 		model.addAttribute("loginModel", new LoginModel());
-			
+			//returns welcome.html
 		return "welcome";
 	}
+	//signup page for if you do not have an account
 	@PostMapping("/doSignup")
 	public String doSignin(Model model)
 	{
@@ -38,9 +41,11 @@ public class LoginController
 		model.addAttribute("SignupModel", new SignupModel());
 		
 
+		//return signin.html
 		return "signin";
 	}
 	
+	//login page when you enter the login button
 	@PostMapping("/doLogin")
 	public String doLogin(@Valid LoginModel loginModel, BindingResult bindingResult, Model model)
 	{
@@ -49,7 +54,7 @@ public class LoginController
 		if(bindingResult.hasErrors())
 		{
 			model.addAttribute("title", "Login Form");
-			
+			//returns to welcome.html on error
 			return "welcome";
 		}
 		
@@ -77,6 +82,7 @@ public class LoginController
 		model.addAttribute("title", "Our Products");
 		model.addAttribute("products", products);
 		
+		//returns orders.html on enter
 		return "orders";
 	}	
 	

@@ -8,16 +8,23 @@
 </head>
 
 <body>
+<!--gets the layout from the layout folder-->
 	<div layout:fragment="content">
 
 
+<!--new div that will hold the login page within it-->
 		<div class="container">
 		
 			<div class="row">
 				<div class="col">
 				<h3> Sign-Up </h3>
+				<!--posts to dologin-->
 					<form action="#" th:action="@{doLogin}" th:object="${loginModel}" method="post">
+					
+					
+					<!--table that holds the username and password in the table rows-->
 						<table>
+						
 							<tr>
 								<td> User Name: </td>
 								<td><input type="text" th:field="*{username}"></td>
@@ -35,6 +42,7 @@
 								</td>
 							</tr>
 							<tr>
+							<!--submit button-->
 								<td colspan="2"><input type="submit" value="Submit"></td>
 							</tr>
 						</table>
@@ -45,6 +53,8 @@
 				</div>
 				<div class="col">
 				<h3> Login</h3>
+				
+				<!--another form that holds the doLogin, just this time has the sign up instead of the sign in-->
 					<form action="#" th:action="@{doLogin}" th:object="${loginModel}" method="post">
 						<table>
 							<tr>

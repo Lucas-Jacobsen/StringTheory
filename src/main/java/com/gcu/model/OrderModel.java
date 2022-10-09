@@ -1,13 +1,16 @@
 package com.gcu.model;
 
+//intitializes variables in the order model
 public class OrderModel
 {
+
 	 Long id = 0L;
 	String orderNum = "";
 	String productName = "";
 	float price = 0.00f;
 	int quantity = 0;
 
+	//creates the order with the attributes provided
 public OrderModel(long id, String orderNum, String productName, float price, int quantity) {
 	super();
 	this.id = id;
@@ -16,6 +19,8 @@ public OrderModel(long id, String orderNum, String productName, float price, int
 	this.price = price;
 	this.quantity = quantity;
 }
+
+//getters and setters for the order model
 	public void setId(long id) {
 		this.id = id;
 	}
