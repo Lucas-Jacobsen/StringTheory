@@ -13,31 +13,25 @@
 
 
 		<!--new div that will hold the Create Guitar within it-->
+		<form action="#" th:action="@{doLogin}" th:object="${createProduct}" method="post">
 		<div class="container">
 			<div class="row align-items-start">
 				<div class="col" style=padding-top:150px>
-					<form action="#" th:action="@{doProducts}" method="post">
-
-
-
+					
+=
 						<h2>Product Name</h2>
-						<input type="text" name="Create">
-
-
-						
-
-
+						<input type="text" th:field="*{productName}" name="productName">
 
 				</div>
 				<div class="col" style=padding-top:25px>
-					<h1> Create Guitar</h1>
+					<h1> Create Product</h1>
 					<br><br><br>
 
 
 
 
 					<h2>Product Description</h2>
-					<input type="text" name="Create"><br><br>
+					<input type="text" th:field="*{productDescription}"name="productDescription">
 
 					<!--submit button-->
 					<h2 colspan="2"><input type="submit" value="Confirm"></h2>
@@ -52,11 +46,11 @@
 
 
 					<h2>Product Price</h2>
-					<input type="text" name="Create">
+					<input type="text" th:field="*{productPrice}" name="productPrice">
 
 
-					
 
+	
 
 				</div>
 			</div>

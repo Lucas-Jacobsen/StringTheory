@@ -88,7 +88,8 @@ public class LoginController
  @GetMapping("/createProduct")	
  public String doCreate(Model model)
  {
-	 model.addAttribute("Title", "Create Product");
+	 ;
+	 model.addAttribute("createProduct", new ProductModel());
 	 
 	 return "createProduct";
  }
@@ -98,7 +99,7 @@ public String doProduct(Model model)
 {
 	return "orders";
 }
-		
+	
 	
 	
 	

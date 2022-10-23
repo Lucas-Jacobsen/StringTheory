@@ -1,5 +1,6 @@
 package com.gcu.business;
 
-public class Create {
+public class Create 
+{
 
 }

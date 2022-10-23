@@ -1,13 +1,25 @@
 package com.gcu.model;
 
+import javax.validation.constraints.NotNull;
+
 //Initializes product model variables
 public class ProductModel {
-
+	@NotNull
 	int productID = 0;
+	@NotNull
 	String productName = "";
-	String productDescription = " ";
+	@NotNull
+	String productDescription = "";
+	@NotNull
 	float productPrice = 0.00f;
 
+	public ProductModel()
+	{
+	this.productID = productID;
+	this.productName = productName;
+	this.productDescription = productDescription;
+	this.productPrice = productPrice;
+	}
 	//creates the product model
 	public ProductModel(int productID, String productName, String productDescription, float productPrice) {
 		super();
@@ -35,11 +47,11 @@ public class ProductModel {
 		this.productName = productName;
 	}
 
-	public String getProductDescripiton() {
+	public String getProductDescription() {
 		return productDescription;
 	}
 
-	public void setProductDescripiton(String productDescripiton) {
+	public void setProductDescription(String productDescripiton) {
 		this.productDescription	 = productDescripiton;
 	}
 
