@@ -17,6 +17,7 @@ public class ProductModel {
 		this.productPrice = productPrice;
 	}
 
+
 	//getters and setters for the product model
 	public int getProductID() {
 		return productID;
