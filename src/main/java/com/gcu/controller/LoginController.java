@@ -52,7 +52,7 @@ public class LoginController
 		return "signup";
 	}
 	
-	//login page when you enter the login button
+	//login page when you enter the login button - take you to landing page
 	@PostMapping("/doLogin")
 	public String doLogin(@Valid LoginModel loginModel, BindingResult bindingResult, Model model)
 	{
@@ -69,23 +69,31 @@ public class LoginController
 	
 		
 		
-		//Create products
-		List<ProductModel> products =service.getProducts();
-		//products.add(new ProductModel(0,"Electric Guitar", "Electtic Guitar Description", 249.99f));
-		//products.add(new ProductModel(0,"Acoustic Guitar", "Acoustic Guitar Description", 199.99f));
-		//products.add(new ProductModel(0,"Bass Guitar", "Bass Guitar Description", 174.99f));
-		//products.add(new ProductModel(0,"Amplifier", "Amplifier  Description", 99.99f));
-
 		
-		//Display orders view
-		model.addAttribute("title", "Our Products");
-		model.addAttribute("products", products);
 		
 		//returns orders.html on enter
-		return "orders";
+		return "landing";
 	}	
 	
- @GetMapping("/doCreate")	
+	//To products page 
+	@PostMapping("/doProducts")
+	public String doProducts(ProductList productList, Model model )
+	{
+		//Create products
+				List<ProductModel> products =service.getProducts();
+				//products.add(new ProductModel(0,"Electric Guitar", "Electtic Guitar Description", 249.99f));
+				//products.add(new ProductModel(0,"Acoustic Guitar", "Acoustic Guitar Description", 199.99f));
+				//products.add(new ProductModel(0,"Bass Guitar", "Bass Guitar Description", 174.99f));
+				//products.add(new ProductModel(0,"Amplifier", "Amplifier  Description", 99.99f));
+
+				
+				//Display orders view
+				model.addAttribute("title", "Our Products");
+				model.addAttribute("products", products);
+		return "orders";
+	}
+	
+ @PostMapping("/doCreate")	
  public String doCreate(@Valid ProductModel productModel, BindingResult bindingResult, Model model)
  {
 	 
@@ -94,11 +102,14 @@ public class LoginController
 	 return "createProduct";
  }
  
-@PostMapping("/doProduct")
-public String doProduct(ProductModel productModel, Model model)
+@PostMapping("/doCreateResults")
+public String doCreateResults(ProductModel productModel, Model model)
 {
 	List<ProductModel> newProduct = new ArrayList<ProductModel>();
 	newProduct.add(new ProductModel(5, productModel.getProductName(), productModel.getProductDescription(), productModel.getProductPrice()));
+	
+	ProductList pl = new ProductList();
+	pl.products.add(new ProductModel(5, productModel.getProductName(), productModel.getProductDescription(), productModel.getProductPrice()));
 	
 	model.addAttribute("newProduct", newProduct);
 	

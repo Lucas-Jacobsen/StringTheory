@@ -9,7 +9,7 @@ import javax.xml.bind.annotation.XmlRootElement;
 @XmlRootElement
 public class ProductList 
 {
-	private List<ProductModel> products = new ArrayList<ProductModel>();
+	public List<ProductModel> products = new ArrayList<ProductModel>();
 	
 	@XmlElement(name="product")
 	public List<ProductModel> getProducts()
