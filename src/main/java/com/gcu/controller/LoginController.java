@@ -65,12 +65,6 @@ public class LoginController
 			return "welcome";
 		}
 		
-		
-	
-		
-		
-		
-		
 		//returns orders.html on enter
 		return "landing";
 	}	
@@ -79,20 +73,15 @@ public class LoginController
 	@PostMapping("/doProducts")
 	public String doProducts(ProductList productList, Model model )
 	{
-		//Create products
+				//Create products
 				List<ProductModel> products =service.getProducts();
-				//products.add(new ProductModel(0,"Electric Guitar", "Electtic Guitar Description", 249.99f));
-				//products.add(new ProductModel(0,"Acoustic Guitar", "Acoustic Guitar Description", 199.99f));
-				//products.add(new ProductModel(0,"Bass Guitar", "Bass Guitar Description", 174.99f));
-				//products.add(new ProductModel(0,"Amplifier", "Amplifier  Description", 99.99f));
-
 				
 				//Display orders view
 				model.addAttribute("title", "Our Products");
 				model.addAttribute("products", products);
 		return "orders";
 	}
-	
+//Take user to createProduct page
  @PostMapping("/doCreate")	
  public String doCreate(@Valid ProductModel productModel, BindingResult bindingResult, Model model)
  {
@@ -105,12 +94,13 @@ public class LoginController
 @PostMapping("/doCreateResults")
 public String doCreateResults(ProductModel productModel, Model model)
 {
+	//Adds new product to new list
 	List<ProductModel> newProduct = new ArrayList<ProductModel>();
 	newProduct.add(new ProductModel(5, productModel.getProductName(), productModel.getProductDescription(), productModel.getProductPrice()));
-	
+	//add new product to product list 
 	ProductList pl = new ProductList();
 	pl.products.add(new ProductModel(5, productModel.getProductName(), productModel.getProductDescription(), productModel.getProductPrice()));
-	
+	//send new list to createProductResults page
 	model.addAttribute("newProduct", newProduct);
 	
 	return "createProductResults";
