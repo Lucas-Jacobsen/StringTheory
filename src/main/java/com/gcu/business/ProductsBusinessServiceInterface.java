@@ -14,11 +14,10 @@ public interface ProductsBusinessServiceInterface
 	{
 		//Create products
 				List<ProductModel> Products = new ArrayList<ProductModel>();
-				Products.add(new ProductModel(1, "000001", "Product 1", 1.00f));
-				Products.add(new ProductModel(2, "000002", "Product 2", 2.00f));
-				Products.add(new ProductModel(3, "000003", "Product 3", 3.00f));
-				Products.add(new ProductModel(4, "000004", "Product 4", 4.00f));
-				Products.add(new ProductModel(5, "000005", "Product 5", 5.00f));
+				Products.add(new ProductModel(1, "Electric Guitars", "Amplify your playing with these guitars", 1.00f));
+				Products.add(new ProductModel(2, "Acoustic Guitars", "Look no further for the best acoustics on the market.", 2.00f));
+				Products.add(new ProductModel(3, "Bass Guitars", "Play those low notes in style...", 3.00f));
+				Products.add(new ProductModel(4, "Amplifiers", "Get Loud. As loud as possible!", 4.00f));
 				
 				return Products;
 	}
