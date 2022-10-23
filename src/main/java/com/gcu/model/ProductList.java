@@ -9,18 +9,18 @@ import javax.xml.bind.annotation.XmlRootElement;
 @XmlRootElement
 public class ProductList 
 {
-	private List<ProductModel> orders = new ArrayList<ProductModel>();
+	private List<ProductModel> products = new ArrayList<ProductModel>();
 	
 	@XmlElement(name="product")
 	public List<ProductModel> getProducts()
 	{
-		return this.orders;
+		return this.products;
 	}
 
 
 	public void setProducts(List<ProductModel> products) 
 	{
-		this.orders = orders;
+		this.products = products;
 
 	}
 			
