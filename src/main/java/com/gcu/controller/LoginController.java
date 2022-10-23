@@ -85,9 +85,20 @@ public class LoginController
 		return "orders";
 	}	
 	
+ @GetMapping("/createProduct")	
+ public String doCreate(Model model)
+ {
+	 model.addAttribute("Title", "Create Product");
+	 
+	 return "createProduct";
+ }
+ 
+@GetMapping("/orders")
+public String doProduct(Model model)
+{
+	return "orders";
+}
 		
-	
-	
 	
 	
 	
