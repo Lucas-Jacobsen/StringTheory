@@ -17,6 +17,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import com.gcu.business.ProductsBusinessService;
 import com.gcu.model.LoginModel;
 import com.gcu.model.OrderModel;
+import com.gcu.model.ProductList;
 import com.gcu.model.ProductModel;
 import com.gcu.model.SignupModel;
 
@@ -40,7 +41,7 @@ public class LoginController
 			//returns welcome.html
 		return "welcome";
 	}
-	//signup page for if you do not have an account
+	//sign up page for if you do not have an account
 	@PostMapping("/doSignup")
 	public String doSignin(Model model)
 	{
@@ -94,9 +95,13 @@ public class LoginController
  }
  
 @PostMapping("/doProduct")
-public String doProduct(Model model)
+public String doProduct(ProductModel productModel, Model model)
 {
-	// model.addAttribute("createProduct", new ProductModel());
+	List<ProductModel> newProduct = new ArrayList<ProductModel>();
+	newProduct.add(new ProductModel(5, productModel.getProductName(), productModel.getProductDescription(), productModel.getProductPrice()));
+	
+	model.addAttribute("newProduct", newProduct);
+	
 	return "createProductResults";
 }
 	

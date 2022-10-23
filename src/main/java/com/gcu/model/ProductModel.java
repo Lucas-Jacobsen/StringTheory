@@ -5,13 +5,16 @@ import javax.validation.constraints.NotNull;
 //Initializes product model variables
 public class ProductModel {
 	@NotNull
-	int productID = 0;
+	public int productID = 0;
 	@NotNull
-	String productName = "";
+	
+	public String productName = "";
 	@NotNull
-	String productDescription = "";
+	
+	public String productDescription = "";
 	@NotNull
-	float productPrice = 0.00f;
+	
+	public float productPrice = 0.00f;
 
 	public ProductModel()
 	{

@@ -13,8 +13,15 @@
 
 
 <!--new div that will hold the login page within it-->
-		
-		
+		<h1>Your New Product</h1>
+		<h3>Product ID:</h3>
+		<h5 th:text="${newProduct[0].productID}">1</h5>
+		<h3>Product Name:</h3>
+		<h5 th:text="${newProduct[0].productName}">1</h5>
+		<h3>Product Description:</h3>
+		<h5 th:text="${newProduct[0].productDescription}">1</h5>
+		<h3>Product Price: </h3>
+		<h5 th:text="${newProduct[0].productPrice}">1</h5>
 		
 		
 	</div>
