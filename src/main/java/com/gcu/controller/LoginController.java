@@ -48,7 +48,6 @@ public class LoginController
 		model.addAttribute("SignupModel", new SignupModel());
 		
 
-		//return signin.html
 		return "signup";
 	}
 	
@@ -85,19 +84,20 @@ public class LoginController
 		return "orders";
 	}	
 	
- @GetMapping("/createProduct")	
- public String doCreate(Model model)
+ @GetMapping("/doCreate")	
+ public String doCreate(@Valid ProductModel productModel, BindingResult bindingResult, Model model)
  {
-	 ;
-	 model.addAttribute("createProduct", new ProductModel());
+	 
+	model.addAttribute("createProduct", new ProductModel());
 	 
 	 return "createProduct";
  }
  
-@GetMapping("/orders")
+@PostMapping("/doProduct")
 public String doProduct(Model model)
 {
-	return "orders";
+	// model.addAttribute("createProduct", new ProductModel());
+	return "createProductResults";
 }
 	
 	
