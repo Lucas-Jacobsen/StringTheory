@@ -34,7 +34,7 @@ public class OrdersDataService implements DataAccessInterface<ProductModel>
 
 	@Override
 	public List<ProductModel> finalAll() {
-		String sql = "SELECT * FROM ORDERS";
+		String sql = "SELECT * FROM PRODUCTS";
 		List<ProductModel> products = new ArrayList<ProductModel>();
 		try
 		{
@@ -42,10 +42,11 @@ public class OrdersDataService implements DataAccessInterface<ProductModel>
 			SqlRowSet srs = jdbcTemplateObject.queryForRowSet(sql);
 			while(srs.next())
 			{
-				products.add(new ProductModel(srs.getInt("ID"),
+				products.add(new ProductModel(srs.getInt("PRODUCT_ID"),
+											srs.getString("PRODUCT_CATEGORY"),
 											srs.getString("PRODUCT_NAME"),
 											srs.getString("PRODUCT_DESCRIPTION"),
-											srs.getFloat("PRICE")));
+											srs.getFloat("PRODUCT_PRICE")));
 			}
 		}
 		catch(Exception e)

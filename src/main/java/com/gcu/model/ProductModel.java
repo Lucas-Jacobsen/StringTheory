@@ -13,18 +13,22 @@ public class ProductModel {
 	public String productDescription = "";
 	@NotNull
 	public float productPrice = 0.00f;
+	@NotNull
+	public String productCategory = "";
 
 	public ProductModel()
 	{
 	this.productID = productID;
+	this.productCategory = productCategory;
 	this.productName = productName;
 	this.productDescription = productDescription;
 	this.productPrice = productPrice;
 	}
 	//creates the product model
-	public ProductModel(int productID, String productName, String productDescription, float productPrice) {
+	public ProductModel(int productID, String productCategory, String productName, String productDescription, float productPrice) {
 		super();
 		this.productID = productID;
+		this.productCategory = productCategory;
 		this.productName = productName;
 		this.productDescription = productDescription;
 		this.productPrice = productPrice;
@@ -39,7 +43,17 @@ public class ProductModel {
 	public void setProductID(int productID) {
 		this.productID = productID;
 	}
-
+	
+	public String getProductCategory()
+	{
+		return productCategory;
+	}
+	
+	public void setProductCategory(String productCategory)
+	{
+		this.productCategory = productCategory;
+	}
+	
 	public String getProductName() {
 		return productName;
 	}
