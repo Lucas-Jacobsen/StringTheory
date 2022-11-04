@@ -1,19 +1,17 @@
 package com.gcu.model;
 
 import javax.validation.constraints.NotNull;
+import javax.validation.constraints.Size;
 
 //Initializes product model variables
 public class ProductModel {
 	@NotNull
 	public int productID = 0;
 	@NotNull
-	
 	public String productName = "";
 	@NotNull
-	
 	public String productDescription = "";
 	@NotNull
-	
 	public float productPrice = 0.00f;
 
 	public ProductModel()

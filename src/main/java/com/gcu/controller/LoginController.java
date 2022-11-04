@@ -1,4 +1,4 @@
-package com.gcu.controller;
+	package com.gcu.controller;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -15,6 +15,7 @@ import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 
 import com.gcu.business.ProductsBusinessService;
+import com.gcu.business.SecurityBusinessService;
 import com.gcu.model.LoginModel;
 import com.gcu.model.OrderModel;
 import com.gcu.model.ProductList;
@@ -29,6 +30,8 @@ public class LoginController
 	
 	@Autowired
 	private ProductsBusinessService service;
+	@Autowired
+	SecurityBusinessService security;
 	
 	
 	//second backslash comes after the first login so we can have a welcome page
@@ -75,6 +78,8 @@ public class LoginController
 			return "welcome";
 		}
 		
+		security.authenticateLogin(loginModel.getUsername(), loginModel.getPassword());
+
 		//returns orders.html on enter
 		//Change back to landing when done testing exception
 		return "landing";}
@@ -105,8 +110,18 @@ public class LoginController
  @PostMapping("/doCreate")	
  public String doCreate(@Valid ProductModel productModel, BindingResult bindingResult, Model model)
  {
+<<<<<<< Upstream, based on branch 'master' of https://github.com/cfirnkoess1/CST-Milestone-339.git
 	 try {
 	 
+=======
+	//Check for validation order
+			if(bindingResult.hasErrors())
+			{
+				model.addAttribute("title", "Login Form");
+				//returns to welcome.html on error
+				return "createProduct";
+			}
+>>>>>>> 55ef76e Added verification using the Security business Class Connected a MySQL database and wired to project
 	model.addAttribute("createProduct", new ProductModel());
 	 
 	 return "createProduct";}
