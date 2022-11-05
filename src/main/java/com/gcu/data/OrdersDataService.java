@@ -63,9 +63,14 @@ public class OrdersDataService implements DataAccessInterface<ProductModel>
 	}
 
 	@Override
-	public boolean create(ProductModel t) {
-		// TODO Auto-generated method stub
-		return false;
+	public boolean create(ProductModel product) 
+	{
+		String sql = "INSERT INTO PRODUCTS(PRODUCT_ID, PRODUCT_CATEGORY, PRODUCT_NAME, PRODUCT_DESCRIPTION, PRODUCT_PRICE) VALUeS(?,?,?,?,?)";
+
+		//execute sql
+		int rows = jdbcTemplateObject.update(sql, 0,  product.getProductCategory(), product.getProductCategory(), product.getProductDescription(), product.getProductPrice());
+
+		return rows ==1 ? true : false;
 	}
 
 	@Override

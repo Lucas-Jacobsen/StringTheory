@@ -8,40 +8,46 @@
 </head>
 
 <body>
-	
+
 	<!--gets the layout from the layout folder-->
-	 <div layout:fragment="content">
+	<div layout:fragment="content">
 
 		<!--new div that will hold the Create Guitar within it-->
-		<form action="#" th:action="@{doCreateResults}" th:object="${createProduct}" method="post">
-		<div class="container">
-			<div class="row align-items-start">
-				<div class="col" style=padding-top:150px>
+		<form action="#" th:action="@{doCreateResults}" th:object="${createProduct}" method="post" >
+			<div class="container">
+				<div class="row align-items-start">
+					<div class="col" style="padding-top:50px;width:33%">
+
+
+
 					
+					<div class="col" style="padding-top:25px; width:33%">
+						<h1> Create Product</h1>
+						<br><br><br>
 
 						<h2>Product Name</h2>
 						<input type="text" th:field="*{productName}" name="productName">
 
-				</div>
-				<div class="col" style=padding-top:25px>
-					<h1> Create Product</h1>
-					<br><br><br>
+						<h2>Product Category</h2>
+						<input type="text" th:field="*{productCategory}" name="productCategory">
 
-					<h2>Product Description</h2>
-					<input type="text" th:field="*{productDescription}"name="productDescription">
+						<h2>Product Description</h2>
+						<input type="text" th:field="*{productDescription}" name="productDescription">
 
-					<!--submit button-->
-					<h2 colspan="2"><input type="submit" value="Confirm"></h2>
-					<form>
+						<h2>Product Price</h2>
+						<input type="text" th:field="*{productPrice}" name="productPrice" style=margin-bottom:25px>
 
-				</div>
-				<div class="col" style=padding-top:150px>
-					<h2>Product Price</h2>
-					<input type="text" th:field="*{productPrice}" name="productPrice">
-				</div>
-			</div>
+						<!--submit button-->
+						<h2 colspan="2"><input type="submit" value="Confirm" ></h2>
+		</form>
 
-		</div>
+	</div>
+	<div class="col" style="padding-top:150px; width:33%">
+	</div>
+	</div>
+	</div>
+
+	</div>
 	</div>
 
 	</div>

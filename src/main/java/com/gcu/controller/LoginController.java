@@ -135,13 +135,23 @@ public class LoginController
 public String doCreateResults(ProductModel productModel, Model model)
 {try {
 	//Adds new product to new list
-	List<ProductModel> newProduct = new ArrayList<ProductModel>();
-	newProduct.add(new ProductModel(5, productModel.getProductName(), productModel.getProductDescription(), productModel.getProductPrice()));
+	/**List<ProductModel> newProduct = new ArrayList<ProductModel>();
+	newProduct.add(new ProductModel(5, productModel.getProductCategory(), productModel.getProductName(), productModel.getProductDescription(), productModel.getProductPrice()));
 	//add new product to product list 
 	ProductList pl = new ProductList();
-	pl.products.add(new ProductModel(5, productModel.getProductName(), productModel.getProductDescription(), productModel.getProductPrice()));
+	pl.products.add(new ProductModel(5,productModel.getProductCategory(), productModel.getProductName(), productModel.getProductDescription(), productModel.getProductPrice()));
 	//send new list to createProductResults page
 	model.addAttribute("newProduct", newProduct);
+	**/
+	service.getNewProduct(productModel);
+	
+
+	ProductModel newProduct = service.getProducts().get(service.getProducts().size() - 1);
+	
+	
+	model.addAttribute("newProduct", newProduct);
+
+	
 	
 	return "createProductResults";
 }

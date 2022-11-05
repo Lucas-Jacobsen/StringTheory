@@ -22,9 +22,14 @@ public interface ProductsBusinessServiceInterface
 				return Products;
 	}
 	
+	public default boolean getNewProduct(ProductModel product)
+	{
+		return false;
+	}
 	public void init();
 	
 	public void destroy();
+
 
 	
  

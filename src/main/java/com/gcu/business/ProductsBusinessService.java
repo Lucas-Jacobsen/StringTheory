@@ -35,6 +35,13 @@ public class ProductsBusinessService implements ProductsBusinessServiceInterface
 	{ 	
 		return service.finalAll();
 	}
+	@Override
+	public boolean getNewProduct(ProductModel product)
+	{
+		ProductModel pm = product;
+		return service.create(pm);
+	}
+	
 }
 
 
