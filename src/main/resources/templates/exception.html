@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.Tymeleaf.org" xmlns:layout="http:www.ultraq.net.nz/thymeleaf/loyout"
+	layout:decorate="layouts/defaultTemplate">
+
+<head>
+	<meta charset="UTF-8">
+	<title>CST-339 Spring Boot Activity Application</title>
+	
+</head>
+
+<body style=background-color:#F1f1f1>
+<!--gets the layout from the layout folder-->
+	<div layout:fragment="content">
+
+
+<!--new div that will hold the login page within it-->
+		<h2>We are sorry, there seems to be an error!</h2>
+		<h4>Please let us know, and we will fix it as soon as possible!</h4>
+		 <div class="row justify-content-center">
+    <div class="col-2">
+      <form action="#" th:action="@{dologin}" method="post">
+	
+		<!--submit button-->
+		<h2 colspan="2"><input type="submit" value="Return to landing"></h2>
+		</form>
+		
+    </div>
+    
+  </div>
+		
+		
+	</div>
+</body>
+
+</html>

@@ -35,27 +35,37 @@ public class LoginController
 	@GetMapping("/")
 	public String display(Model model)
 	{
+		try {
 		//Display Login form view
 		model.addAttribute("Title", "Login Form");
 		model.addAttribute("loginModel", new LoginModel());
 			//returns welcome.html
-		return "welcome";
+		return "welcome";}
+		 catch(Exception e)
+		 {
+				return "exception";
+		 }
 	}
 	//sign up page for if you do not have an account
 	@PostMapping("/doSignup")
 	public String doSignin(Model model)
-	{
+	{try {
 		model.addAttribute("Title", "Signup Form");
 		model.addAttribute("SignupModel", new SignupModel());
 		
 
-		return "signup";
+		return "signup";}
+	 catch(Exception e)
+	 {
+			return "exception";
+	 }
 	}
 	
 	//login page when you enter the login button - take you to landing page
 	@PostMapping("/doLogin")
 	public String doLogin(@Valid LoginModel loginModel, BindingResult bindingResult, Model model)
 	{
+		try {
 		
 		//Check for validation order
 		if(bindingResult.hasErrors())
@@ -66,34 +76,49 @@ public class LoginController
 		}
 		
 		//returns orders.html on enter
-		return "landing";
+		//Change back to landing when done testing exception
+		return "landing";}
+		 catch(Exception e)
+		 {
+				return "exception";
+		 }
 	}	
 	
 	//To products page 
 	@PostMapping("/doProducts")
 	public String doProducts(ProductList productList, Model model )
 	{
+		try {
 				//Create products
 				List<ProductModel> products =service.getProducts();
 				
 				//Display orders view
 				model.addAttribute("title", "Our Products");
 				model.addAttribute("products", products);
-		return "orders";
+		return "orders";}
+		 catch(Exception e)
+		 {
+				return "exception";
+		 }
 	}
 //Take user to createProduct page
  @PostMapping("/doCreate")	
  public String doCreate(@Valid ProductModel productModel, BindingResult bindingResult, Model model)
  {
+	 try {
 	 
 	model.addAttribute("createProduct", new ProductModel());
 	 
-	 return "createProduct";
+	 return "createProduct";}
+	 catch(Exception e)
+	 {
+			return "exception";
+	 }
  }
  
 @PostMapping("/doCreateResults")
 public String doCreateResults(ProductModel productModel, Model model)
-{
+{try {
 	//Adds new product to new list
 	List<ProductModel> newProduct = new ArrayList<ProductModel>();
 	newProduct.add(new ProductModel(5, productModel.getProductName(), productModel.getProductDescription(), productModel.getProductPrice()));
@@ -104,6 +129,11 @@ public String doCreateResults(ProductModel productModel, Model model)
 	model.addAttribute("newProduct", newProduct);
 	
 	return "createProductResults";
+}
+catch(Exception e){
+	return "exception";
+}
+
 }
 	
 	
