@@ -1,6 +1,6 @@
 <!DOCTYPE html>
 <html xmlns:th="http://www.Tymeleaf.org" xmlns:layout="http:www.ultraq.net.nz/thymeleaf/layout">
-	
+
 
 <head>
 	<meta charset="UTF-8">
@@ -22,85 +22,85 @@
 </head>
 
 <body style=background-color:#f1f1f1>
-<div layout:fragment="content">
+	<div layout:fragment="content">
 
-<!--main logo on the sign up page-->
-<div class="container" style=text-align:center>
+		<!--main logo on the sign up page-->
+		<div class="container" style=text-align:center>
 			<br>
-		<div class="jumbotron jumbotron-fluid" style=text-align:center>
-			<img th:src="@{/images/String.png}" style=height:200px; /><br /><br />
-			<div class="container">
-				<h1 class="display-4">String Theory</h1>
-				<p class="lead">The One-Stop-Shop for all your guitar needs.</p>
-			</div>
-		</div>
-		<br>
-		 <div align="center">
-			<div class="row">
-				<div class="col" >
-				
-				<!-- runs the sign up model and on action will post the do login page-->
-				<h3> Sign-Up </h3>
-				<form action="#" th:action="@{doLogin}" th:object="${SignupModel}" method="post">
-					<table>
-					<tr>
-						<td>
-							<h6 class="display-4" style=font-size:25px>First Name:</h6>
-						</td>
-						
-						<!--asks for all of the sign in values in a row-->
-						<!--first name-->
-						<td style=padding-bottom:25px><input type="text" th:field="*{firstName}"></td>
-
-					</tr>
-											<!--last name-->
-
-					<tr>
-						<td >
-							<h6 class="display-4" style=font-size:25px>Last Name:</h6>
-						</td>
-						<td style=padding-bottom:25px><input type="text" th:field="*{lastName}"></td>
-
-					</tr>
-					<tr>
-											<!--email-->
-
-						<td>
-							<h6 class="display-4" style=font-size:25px>Email:</h6>
-						</td>
-						<td style=padding-bottom:25px><input type="text" th:field="*{email}"></td>
-
-					</tr>
-					
-											<!--user name-->
-
-					<tr>
-						<td>
-							<h6 class="display-4" style=font-size:25px>User Name:</h6>
-						</td>
-						<td style=padding-bottom:25px><input type="text" th:field="*{username}"></td>
-	
-					</tr>
-					
-											<!--password-->
-
-					<tr>
-						<td >
-							<h6 class="display-4" style=font-size:25px>Password:</h6>
-						</td>
-						<td style=padding-bottom:25px><input type="text" th:field="*{password}"></td>
-
-					</tr>
-					<tr>
-								<td colspan="2"><input type="submit" value="Enter"></td>
-							</tr>
-					</table>
-					
-					</form>
+			<div class="jumbotron jumbotron-fluid" style=text-align:center>
+				<img th:src="@{/images/String.png}" style=height:200px; /><br /><br />
+				<div class="container">
+					<h1 class="display-4">String Theory</h1>
+					<p class="lead">The One-Stop-Shop for all your guitar needs.</p>
 				</div>
 			</div>
-		 </div>
-</div>
-</div>
+			<br>
+			<div align="center">
+				<div class="row">
+					<div class="col">
+
+						<!-- runs the sign up model and on action will post the do login page-->
+						<h3> Sign-Up </h3>
+						<form action="#" th:action="@{doLogin}" th:object="${SignupModel}" method="post">
+							<table>
+								<tr>
+									<td>
+										<h6 class="display-4" style=font-size:25px>First Name:</h6>
+									</td>
+
+									<!--asks for all of the sign in values in a row-->
+									<!--first name-->
+									<td style=padding-bottom:25px><input type="text" th:field="*{firstName}"></td>
+
+								</tr>
+								<!--last name-->
+
+								<tr>
+									<td>
+										<h6 class="display-4" style=font-size:25px>Last Name:</h6>
+									</td>
+									<td style=padding-bottom:25px><input type="text" th:field="*{lastName}"></td>
+
+								</tr>
+								<tr>
+									<!--email-->
+
+									<td>
+										<h6 class="display-4" style=font-size:25px>Email:</h6>
+									</td>
+									<td style=padding-bottom:25px><input type="text" th:field="*{email}"></td>
+
+								</tr>
+
+								<!--user name-->
+
+								<tr>
+									<td>
+										<h6 class="display-4" style=font-size:25px>User Name:</h6>
+									</td>
+									<td style=padding-bottom:25px><input type="text" th:field="*{username}"></td>
+
+								</tr>
+
+								<!--password-->
+
+								<tr>
+									<td>
+										<h6 class="display-4" style=font-size:25px>Password:</h6>
+									</td>
+									<td style=padding-bottom:25px><input type="text" th:field="*{password}"></td>
+
+								</tr>
+								<tr>
+									<td colspan="2"><input type="submit" value="Enter"></td>
+								</tr>
+							</table>
+
+						</form>
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
 
 </body>

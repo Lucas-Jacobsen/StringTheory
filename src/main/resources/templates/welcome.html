@@ -19,6 +19,7 @@
 
 </head>
 <!--Welcome page, first page you see-->
+
 <body style=background-color:#F1F1F1>
 	<div layout:fragment="content">
 
@@ -33,7 +34,7 @@
 		</div>
 		<br>
 		<div align="center">
-		<!--asks the user to login-->
+			<!--asks the user to login-->
 			<h1 class="display-4">Login</h1><br>
 			<form action="#" th:action="@{doLogin}" th:object="${loginModel}" method="post">
 				<table>
@@ -43,7 +44,7 @@
 						</td>
 						<td style=padding-bottom:25px><input type="text" th:field="*{username}"></td>
 						<td>
-							 <!--<h5 style="color: red;" th:if="${#fields.hasErrors('username')}" th:errors="*{username}">
+							<!--<h5 style="color: red;" th:if="${#fields.hasErrors('username')}" th:errors="*{username}">
 								Username Error</h5> -->
 						</td>
 					</tr>
@@ -53,27 +54,28 @@
 						</td>
 						<td style=padding-bottom:25px><input type="password" th:field="*{password}"></td>
 						<td>
-							 <!-- <h5 style="color: red;" th:if="${#fields.hasErrors('password')}" th:errors="*{password}">
+							<!-- <h5 style="color: red;" th:if="${#fields.hasErrors('password')}" th:errors="*{password}">
 								Password Error</h5> -->
 						</td>
 					</tr>
 					<tr>
-						<td style="text-align:center" colspan="2" ><input type="submit" value="Login"></td>
+						<td style="text-align:center" colspan="2"><input type="submit" value="Login"></td>
 					</tr>
 				</table>
 				<!--Exception handling-->
-				<div th:if="${#fields.hasErrors('*')}" style=color:red> Login/Sign-up Failed - Please fill in all fields</div>
+				<div th:if="${#fields.hasErrors('*')}" style=color:red> Login/Sign-up Failed - Please fill in all fields
+				</div>
 				<div th:each="err : ${#fields.errors('*')}">
 			</form><br>
-			
+
 			<!--Asks the user to sign up if they do not already have an account-->
-				<h6 class="display-4" style=font-size:25px>Don't have an account? Sign-up Now!</h6>
-				
-				<form action ="#" th:action= "@{doSignup}"method="post">
+			<h6 class="display-4" style=font-size:25px>Don't have an account? Sign-up Now!</h6>
 
-				<form action ="#" th:action= "@{doSignin}" method="post">
+			<form action="#" th:action="@{doSignup}" method="post">
 
-					<td style="text-align:center" colspan="2" ><input type="Submit" value="Sign Up!"></td>
+				<form action="#" th:action="@{doSignin}" method="post">
+
+					<td style="text-align:center" colspan="2"><input type="Submit" value="Sign Up!"></td>
 				</form>
 
 		</div>

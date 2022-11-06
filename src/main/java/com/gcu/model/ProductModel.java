@@ -7,23 +7,23 @@ public class ProductModel {
 	@NotNull
 	public int productID = 0;
 	@NotNull
-	
+
 	public String productName = "";
 	@NotNull
-	
+
 	public String productDescription = "";
 	@NotNull
-	
+
 	public float productPrice = 0.00f;
 
-	public ProductModel()
-	{
-	this.productID = productID;
-	this.productName = productName;
-	this.productDescription = productDescription;
-	this.productPrice = productPrice;
+	public ProductModel() {
+		this.productID = productID;
+		this.productName = productName;
+		this.productDescription = productDescription;
+		this.productPrice = productPrice;
 	}
-	//creates the product model
+
+	// creates the product model
 	public ProductModel(int productID, String productName, String productDescription, float productPrice) {
 		super();
 		this.productID = productID;
@@ -32,8 +32,7 @@ public class ProductModel {
 		this.productPrice = productPrice;
 	}
 
-
-	//getters and setters for the product model
+	// getters and setters for the product model
 	public int getProductID() {
 		return productID;
 	}
@@ -55,7 +54,7 @@ public class ProductModel {
 	}
 
 	public void setProductDescription(String productDescripiton) {
-		this.productDescription	 = productDescripiton;
+		this.productDescription = productDescripiton;
 	}
 
 	public float getProductPrice() {
@@ -65,6 +64,5 @@ public class ProductModel {
 	public void setProductPrice(float productPrice) {
 		this.productPrice = productPrice;
 	}
-	
-	
+
 }

@@ -10,61 +10,65 @@
 	<div layout:fragment="content">
 
 		<div class="container">
-		
-		<!--these are all cards that have the products that we have ready to sell displayed from -->
+
+			<!--these are all cards that have the products that we have ready to sell displayed from -->
 			<div class="row">
 				<div class="col">
-				<!--eleectric guitar-->
+					<!--eleectric guitar-->
 					<div class="card" style="width: 18rem;">
 						<img th:src="@{/images/electricGuitar.jpg}" class="card-img-top" alt="electric pic">
 						<div class="card-body">
-							<h5 class="card-title" th:text="${products[0].productName}" >Electric Guitars</h5>
-							<p class="card-text" th:text="${products[0].productPrice.toString()}"> Amplify your playing with these guitars</p>
+							<h5 class="card-title" th:text="${products[0].productName}">Electric Guitars</h5>
+							<p class="card-text" th:text="${products[0].productPrice.toString()}"> Amplify your playing
+								with these guitars</p>
 							<a href="#" class="btn btn-primary">Purchase</a>
 						</div>
 					</div>
 				</div>
-				
-				
-							<!--Acoustic guitar-->
+
+
+				<!--Acoustic guitar-->
 				<div class="col">
-				
+
 					<div class="card" style="width: 18rem; padding-bottom:15px">
 						<img th:src="@{/images/acousticGuitarA.jpg}" class="card-img-top" alt="acoustic pic">
 						<div class="card-body">
-							<h5 class="card-title" th:text="${products[1].productName}" >Acoustic Guitars</h5>
-							<p class="card-text" th:text="${products[1].productPrice.toString()}" >Look no further for the best acoustics on the market.
+							<h5 class="card-title" th:text="${products[1].productName}">Acoustic Guitars</h5>
+							<p class="card-text" th:text="${products[1].productPrice.toString()}">Look no further for
+								the best acoustics on the market.
 							</p>
 							<a href="#" class="btn btn-primary">Purchase</a>
 						</div>
 					</div>
 				</div>
-				
-				
-								<!--Bass guitar-->
+
+
+				<!--Bass guitar-->
 
 				<div class="col">
 					<div class="card" style="width: 18rem;">
 						<img th:src="@{/images/bassGuitar.jpg}" class="card-img-top" alt="bass picture">
 						<div class="card-body">
-							<h5  th:text="${products[2].productName}" class="card-title">Bass Guitars</h5>
-							<p class="card-text" th:text="${products[2].productPrice.toString()}" >Play those low notes in style...<br>
-							
+							<h5 th:text="${products[2].productName}" class="card-title">Bass Guitars</h5>
+							<p class="card-text" th:text="${products[2].productPrice.toString()}">Play those low notes
+								in style...<br>
+
 							</p>
 							<a href="#" class="btn btn-primary">Purchase</a>
 						</div>
 					</div>
 				</div>
-				
-				
-								<!--Guitar Amp-->
+
+
+				<!--Guitar Amp-->
 
 				<div class="col">
 					<div class="card" style="width: 18rem;">
 						<img th:src="@{/images/amplifier.jpg}" class="card-img-top" alt="amp picture">
 						<div class="card-body">
-							<h5 class="card-title" th:text="${products[3].productName.toString()}" >$Amplifiers</h5>
-							<p class="card-text" th:text="${products[3].productPrice.toString()}" >Get Loud. As loud as possible!
+							<h5 class="card-title" th:text="${products[3].productName.toString()}">$Amplifiers</h5>
+							<p class="card-text" th:text="${products[3].productPrice.toString()}">Get Loud. As loud as
+								possible!
 							</p>
 							<a href="#" class="btn btn-primary">Purchase</a>
 						</div>
@@ -73,10 +77,10 @@
 				</div>
 			</div>
 
-			
+
 		</div>
 	</div>
-	
+
 </body>
 
 </html>
