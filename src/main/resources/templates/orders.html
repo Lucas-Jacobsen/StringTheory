@@ -9,72 +9,52 @@
 <body style=background-color:#F1F1F1>
 	<div layout:fragment="content">
 
-		<div class="container">
+		<table style="width: 50%;">
+			<thead>
+				<tr>
+					<th style="text-align: center; white-space:nowrap; font-size:25px; font-weight:700; font-family: artibus slab;">Product ID</th>
+					<th style="text-align: center; white-space:nowrap; font-size:25px; font-weight:700; font-family: artibus slab;">Category</th>
+					<th style="text-align: center; white-space:nowrap; font-size:25px; font-weight:700; font-family: artibus slab;">Product Name</th>
+					<th style="text-align: center; white-space:nowrap; font-size:25px; font-weight:700; font-family: artibus slab;">Description</th>
+					<th style="text-align: center; white-space:nowrap; font-size:25px; font-weight:700; font-family: artibus slab;">Price</th>
+				</tr>
+			</thead>
+			<tbody>
+				<tr th:if="${products.empty}">
+					<td style="text-align: center; padding:10px">No orders Available</td>
+				</tr>
+				<tr th:each="products : ${products}">
+					<td style="text-align: center; padding:25px; white-space:nowrap; ; font-family: artibus slab;">
+						<h5 th:text="${products.productID}">1.00</h5>
+					</td>
+					<td style="text-align: center; padding:25px; white-space:nowrap; font-family: artibus slab;">
+						<h5 th:text="${products.productCategory}">1.00</h5>
+					</td>
+					<td style="text-align: center; padding:25px; white-space:nowrap; font-family: artibus slab;">
+						<h5 th:text="${products.productName}">Product 1</h5>
+					</td>
+					<td style="text-align: center; padding:25px; white-space:nowrap; font-family: artibus slab;">
+						<h5 th:text="${products.productDescription}" >Product 1</h5>
+					</td>
+					<td style="text-align: center; padding:25px; white-space:nowrap; font-family: artibus slab;">
+						<h5 th:text="${products.productPrice}">1.00</h5>
+					</td>
+					
+					
+					
+				</tr>	
+			</tbody>
+		</table>
 		
-		<!--these are all cards that have the products that we have ready to sell displayed from -->
-			<div class="row">
-				<div class="col">
-				<!--eleectric guitar-->
-					<div class="card" style="width: 18rem;">
-						<img th:src="@{/images/electricGuitar.jpg}" class="card-img-top" alt="electric pic">
-						<div class="card-body">
-							<h5 class="card-title" th:text="${products[0].productName}" >Electric Guitars</h5>
-							<p class="card-text" th:text="${products[0].productPrice.toString()}"> Amplify your playing with these guitars</p>
-							<a href="#" class="btn btn-primary">Purchase</a>
-						</div>
-					</div>
-				</div>
-				
-				
-							<!--Acoustic guitar-->
-				<div class="col">
-				
-					<div class="card" style="width: 18rem; padding-bottom:15px">
-						<img th:src="@{/images/acousticGuitarA.jpg}" class="card-img-top" alt="acoustic pic">
-						<div class="card-body">
-							<h5 class="card-title" th:text="${products[1].productName}" >Acoustic Guitars</h5>
-							<p class="card-text" th:text="${products[1].productPrice.toString()}" >Look no further for the best acoustics on the market.
-							</p>
-							<a href="#" class="btn btn-primary">Purchase</a>
-						</div>
-					</div>
-				</div>
-				
-				
-								<!--Bass guitar-->
-
-				<div class="col">
-					<div class="card" style="width: 18rem;">
-						<img th:src="@{/images/bassGuitar.jpg}" class="card-img-top" alt="bass picture">
-						<div class="card-body">
-							<h5  th:text="${products[2].productName}" class="card-title">Bass Guitars</h5>
-							<p class="card-text" th:text="${products[2].productPrice.toString()}" >Play those low notes in style...<br>
-							
-							</p>
-							<a href="#" class="btn btn-primary">Purchase</a>
-						</div>
-					</div>
-				</div>
-				
-				
-								<!--Guitar Amp-->
-
-				<div class="col">
-					<div class="card" style="width: 18rem;">
-						<img th:src="@{/images/amplifier.jpg}" class="card-img-top" alt="amp picture">
-						<div class="card-body">
-							<h5 class="card-title" th:text="${products[3].productName.toString()}" >$Amplifiers</h5>
-							<p class="card-text" th:text="${products[3].productPrice.toString()}" >Get Loud. As loud as possible!
-							</p>
-							<a href="#" class="btn btn-primary">Purchase</a>
-						</div>
-					</div>
-					<br><br><br>
-				</div>
-			</div>
-
+		
+	
 			
-		</div>
+		
+		 
+		
+		
+	
+		
 	</div>
 	
 </body>

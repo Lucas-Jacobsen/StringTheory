@@ -56,7 +56,15 @@
 			<version>2.3.3</version>
 			<scope>runtime</scope>
 		</dependency>
-		
+			<!--For Spring JDBC and the MySQL Database -->
+		<dependency>
+			<groupId>org.springframework.boot</groupId>
+			<artifactId>spring-boot-starter-data-jdbc</artifactId>
+		</dependency>
+		<dependency>
+			<groupId>mysql</groupId>
+			<artifactId>mysql-connector-java</artifactId>
+		</dependency>
 	</dependencies>
 
 	<build>

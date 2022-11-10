@@ -13,23 +13,25 @@
 
 
 <!--new div that will hold the login page within it-->
-		<h1>Your New Product</h1>
-		<h3>Product ID:</h3>
-		<h5 th:text="${newProduct.productID}">1</h5>
-		<h3>Category:</h3>
-		<h5 th:text="${newProduct.productCategory}">1</h5>
-		<h3>Product Name:</h3>
-		<h5 th:text="${newProduct.productName}">1</h5>
-		<h3>Product Description:</h3>
-		<h5 th:text="${newProduct.productDescription}">1</h5>
-		<h3>Product Price: </h3>
-		<h5 th:text="${newProduct.productPrice}">1</h5>
+		<h1>Welcome </h1>
+		<!-- <h3>Your Customer ID:</h3>
+		<h5 th:text="${newCustomer.customerID}">1</h5>-->
+		<h3>First Name:</h3>
+		<h5 th:text="${signupModel.firstName}">1</h5>
+		<h3>Last Name:</h3>
+		<h5 th:text="${signupModel.lastName}">1</h5>
+		<h3>Email:</h3>
+		<h5 th:text="${signupModel.email}">1</h5>
+		<h3>Userame: </h3>
+		<h5 th:text="${signupModel.username}">1</h5>
+		<h3>Password: </h3>
+		<h5 th:text="${signupModel.password}">1</h5>
 		
 		
 		<form action="#" th:action="@{doProducts}" method="post">
 	
 		<!--submit button-->
-		<h2 colspan="2"><input type="submit" value="Return to Products Page"></h2>
+		<h2 colspan="2"><input type="submit" value="View Products"></h2>
 		<form>
 	</div>
 </body>

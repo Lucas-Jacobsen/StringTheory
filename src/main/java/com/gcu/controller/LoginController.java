@@ -1,4 +1,4 @@
-package com.gcu.controller;
+	package com.gcu.controller;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -8,13 +8,17 @@ import javax.validation.Valid;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
+import org.springframework.stereotype.Service;
 import org.springframework.ui.Model;
 import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 
+import com.gcu.business.CustomerBusinessService;
 import com.gcu.business.ProductsBusinessService;
+import com.gcu.business.SecurityBusinessService;
+import com.gcu.data.CustomerDataService;
 import com.gcu.model.LoginModel;
 import com.gcu.model.OrderModel;
 import com.gcu.model.ProductList;
@@ -26,9 +30,14 @@ import com.gcu.model.SignupModel;
 @RequestMapping("/login")
 public class LoginController
 {
-	
+	@SuppressWarnings("unused")
 	@Autowired
 	private ProductsBusinessService service;
+	@Autowired
+	SecurityBusinessService security;
+	@SuppressWarnings("unused")
+	@Autowired
+	private CustomerBusinessService customerService;
 	
 	
 	//second backslash comes after the first login so we can have a welcome page
@@ -50,8 +59,8 @@ public class LoginController
 	@PostMapping("/doSignup")
 	public String doSignin(Model model)
 	{try {
-		model.addAttribute("Title", "Signup Form");
-		model.addAttribute("SignupModel", new SignupModel());
+		
+		model.addAttribute("createCustomer", new SignupModel());
 		
 
 		return "signup";}
@@ -61,9 +70,27 @@ public class LoginController
 	 }
 	}
 	
+	@PostMapping("/newCutomerResults")
+	public String doSignupResults(SignupModel signupModel, Model model)
+	{
+		try
+		{
+			
+
+			customerService.getNewUser(signupModel);
+			
+			model.addAttribute("newCustomer", signupModel);
+			return "signupResults";
+		}
+		catch(Exception e){
+			return "signupResults";
+		}
+		
+
+	}
 	//login page when you enter the login button - take you to landing page
 	@PostMapping("/doLogin")
-	public String doLogin(@Valid LoginModel loginModel, BindingResult bindingResult, Model model)
+	public String doLogin(@Valid LoginModel loginModel, BindingResult bindingResult, Model model, SignupModel signup)
 	{
 		try {
 		
@@ -74,6 +101,8 @@ public class LoginController
 			//returns to welcome.html on error
 			return "welcome";
 		}
+		
+		security.authenticateLogin(loginModel.getUsername(), loginModel.getPassword());
 		
 		//returns orders.html on enter
 		//Change back to landing when done testing exception
@@ -107,6 +136,14 @@ public class LoginController
  {
 	 try {
 	 
+
+	//Check for validation order
+			if(bindingResult.hasErrors())
+			{
+				model.addAttribute("title", "Login Form");
+				//returns to welcome.html on error
+				return "createProduct";
+			}
 	model.addAttribute("createProduct", new ProductModel());
 	 
 	 return "createProduct";}
@@ -118,15 +155,19 @@ public class LoginController
  
 @PostMapping("/doCreateResults")
 public String doCreateResults(ProductModel productModel, Model model)
-{try {
-	//Adds new product to new list
-	List<ProductModel> newProduct = new ArrayList<ProductModel>();
-	newProduct.add(new ProductModel(5, productModel.getProductName(), productModel.getProductDescription(), productModel.getProductPrice()));
-	//add new product to product list 
-	ProductList pl = new ProductList();
-	pl.products.add(new ProductModel(5, productModel.getProductName(), productModel.getProductDescription(), productModel.getProductPrice()));
-	//send new list to createProductResults page
+{
+	try 
+	{
+	
+	service.getNewProduct(productModel);
+	
+
+	ProductModel newProduct = service.getProducts().get(service.getProducts().size() - 1);
+	
+	
 	model.addAttribute("newProduct", newProduct);
+
+	
 	
 	return "createProductResults";
 }
