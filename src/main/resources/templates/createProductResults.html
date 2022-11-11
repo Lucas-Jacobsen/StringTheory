@@ -8,27 +8,29 @@
 </head>
 
 <body>
-	<!--gets the layout from the layout folder-->
+<!--gets the layout from the layout folder-->
 	<div layout:fragment="content">
 
 
-		<!--new div that will hold the login page within it-->
+<!--new div that will hold the login page within it-->
 		<h1>Your New Product</h1>
 		<h3>Product ID:</h3>
-		<h5 th:text="${newProduct[0].productID}">1</h5>
+		<h5 th:text="${newProduct.productID}">1</h5>
+		<h3>Category:</h3>
+		<h5 th:text="${newProduct.productCategory}">1</h5>
 		<h3>Product Name:</h3>
-		<h5 th:text="${newProduct[0].productName}">1</h5>
+		<h5 th:text="${newProduct.productName}">1</h5>
 		<h3>Product Description:</h3>
-		<h5 th:text="${newProduct[0].productDescription}">1</h5>
+		<h5 th:text="${newProduct.productDescription}">1</h5>
 		<h3>Product Price: </h3>
-		<h5 th:text="${newProduct[0].productPrice}">1</h5>
-
-
+		<h5 th:text="${newProduct.productPrice}">1</h5>
+		
+		
 		<form action="#" th:action="@{doProducts}" method="post">
-
-			<!--submit button-->
-			<h2 colspan="2"><input type="submit" value="Return to Products Page"></h2>
-			<form>
+	
+		<!--submit button-->
+		<h2 colspan="2"><input type="submit" value="Return to Products Page"></h2>
+		<form>
 	</div>
 </body>
 

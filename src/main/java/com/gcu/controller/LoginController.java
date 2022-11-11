@@ -1,4 +1,4 @@
-package com.gcu.controller;
+	package com.gcu.controller;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -8,13 +8,17 @@ import javax.validation.Valid;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
+import org.springframework.stereotype.Service;
 import org.springframework.ui.Model;
 import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 
+import com.gcu.business.CustomerBusinessService;
 import com.gcu.business.ProductsBusinessService;
+import com.gcu.business.SecurityBusinessService;
+import com.gcu.data.CustomerDataService;
 import com.gcu.model.LoginModel;
 import com.gcu.model.OrderModel;
 import com.gcu.model.ProductList;
@@ -26,110 +30,205 @@ import com.gcu.model.SignupModel;
 @RequestMapping("/login")
 public class LoginController
 {
-
+	@SuppressWarnings("unused")
 	@Autowired
 	private ProductsBusinessService service;
-
-	// second backslash comes after the first login so we can have a welcome page
+	@Autowired
+	SecurityBusinessService security;
+	@SuppressWarnings("unused")
+	@Autowired
+	private CustomerBusinessService customerService;
+	
+	
+	//second backslash comes after the first login so we can have a welcome page
 	@GetMapping("/")
-	public String display(Model model) {
+	public String display(Model model)
+	{
 		try {
-			// Display Login form view
-			model.addAttribute("Title", "Login Form");
-			model.addAttribute("loginModel", new LoginModel());
-			// returns welcome.html
-			return "welcome";
-		} catch (Exception e) {
-			return "exception";
-		}
+		//Display Login form view
+		model.addAttribute("Title", "Login Form");
+		model.addAttribute("loginModel", new LoginModel());
+			//returns welcome.html
+		return "welcome";}
+		 catch(Exception e)
+		 {
+				return "exception";
+		 }
 	}
-
-	// sign up page for if you do not have an account
+	//sign up page for if you do not have an account
 	@PostMapping("/doSignup")
 	public String doSignin(Model model)
-	{
-		try {
-			model.addAttribute("Title", "Signup Form");
-			model.addAttribute("SignupModel", new SignupModel());
+	{try {
+		
+		model.addAttribute("createCustomer", new SignupModel());
+		
 
-			return "signup";
-		} catch (Exception e) {
+		return "signup";}
+	 catch(Exception e)
+	 {
+			return "exception";
+	 }
+	}
+	
+	@PostMapping("/newCutomerResults")
+	public String doSignupResults(SignupModel signupModel, Model model)
+	{
+		try
+		{
+			
+
+			customerService.getNewUser(signupModel);
+			
+			model.addAttribute("newCustomer", signupModel);
+			return "signupResults";
+		}
+		catch(Exception e){
 			return "exception";
 		}
-	}
+		
 
-	// login page when you enter the login button - take you to landing page
+	}
+	//login page when you enter the login button - take you to landing page
 	@PostMapping("/doLogin")
-	public String doLogin(@Valid LoginModel loginModel, BindingResult bindingResult, Model model)
+	public String doLogin(@Valid LoginModel loginModel, BindingResult bindingResult, Model model, SignupModel signup)
 	{
 		try {
-
-			// Check for validation order
-			if (bindingResult.hasErrors()) {
-				model.addAttribute("title", "Login Form");
-				// returns to welcome.html on error
-				return "welcome";
-			}
-
-			// returns orders.html on enter
-			// Change back to landing when done testing exception
-			return "landing";
-		} catch (Exception e) {
-			return "exception";
+		
+		//Check for validation order
+		if(bindingResult.hasErrors())
+		{
+			model.addAttribute("title", "Login Form");
+			//returns to welcome.html on error
+			return "welcome";
 		}
-	}
-
-	// To products page
+		
+		security.authenticateLogin(loginModel.getUsername(), loginModel.getPassword());
+		
+		//returns orders.html on enter
+		//Change back to landing when done testing exception
+		return "landing";}
+		 catch(Exception e)
+		 {
+				return "exception";
+		 }
+	}	
+	@PostMapping("/error")
+	public String doLanding(@Valid LoginModel loginModel, BindingResult bindingResult, Model model, SignupModel signup)
+	{
+		try {
+		
+		//Check for validation order
+		if(bindingResult.hasErrors())
+		{
+			model.addAttribute("title", "Login Form");
+			//returns to welcome.html on error
+			return "welcome";
+		}
+		
+		security.authenticateLogin(loginModel.getUsername(), loginModel.getPassword());
+		
+		//returns orders.html on enter
+		//Change back to landing when done testing exception
+		return "landing";}
+		 catch(Exception e)
+		 {
+				return "exception";
+		 }
+	}	
+	
+	//To products page 
 	@PostMapping("/doProducts")
-	public String doProducts(@Valid ProductList productList, Model model)
+	public String doProducts(ProductList productList, Model model )
 	{
 		try {
-			// Create products
-			List<ProductModel> products = service.getProducts();
-
-			// Display orders view
-			model.addAttribute("title", "Our Products");
-			model.addAttribute("products", products);
-			return "orders";
-		} catch (Exception e) {
-			return "exception";
-		}
+				//Create products
+				List<ProductModel> products =service.getProducts();
+				
+				//Display orders view
+				model.addAttribute("title", "Our Products");
+				model.addAttribute("products", products);
+		return "orders";}
+		 catch(Exception e)
+		 {
+				return "exception";
+		 }
 	}
-
 //Take user to createProduct page
-	@PostMapping("/doCreate")
-	public String doCreate(@Valid ProductModel productModel, BindingResult bindingResult, Model model)
-	{
-		try {
+ @PostMapping("/doCreate")	
+ public String doCreate(@Valid ProductModel productModel, BindingResult bindingResult, Model model)
+ {
+	 try {
+	 
 
-			model.addAttribute("createProduct", new ProductModel());
-
-			return "createProduct";
-		} catch (Exception e) {
+	//Check for validation order
+			if(bindingResult.hasErrors())
+			{
+				model.addAttribute("title", "Login Form");
+				//returns to welcome.html on error
+				return "createProduct";
+			}
+	model.addAttribute("createProduct", new ProductModel());
+	 
+	 return "createProduct";}
+	 catch(Exception e)
+	 {
 			return "exception";
-		}
-	}
-
-	@PostMapping("/doCreateResults")
-	public String doCreateResults(ProductModel productModel, Model model)
+	 }
+ }
+ 
+@PostMapping("/doCreateResults")
+public String doCreateResults(ProductModel productModel, Model model)
+{
+	try 
 	{
-		try {
-			// Adds new product to new list
-			List<ProductModel> newProduct = new ArrayList<ProductModel>();
-			newProduct.add(new ProductModel(5, productModel.getProductName(), productModel.getProductDescription(),
-					productModel.getProductPrice()));
-			// add new product to product list
-			ProductList pl = new ProductList();
-			pl.products.add(new ProductModel(5, productModel.getProductName(), productModel.getProductDescription(),
-					productModel.getProductPrice()));
-			// send new list to createProductResults page
-			model.addAttribute("newProduct", newProduct);
+	
+	service.getNewProduct(productModel);
+	
 
-			return "createProductResults";
-		} catch (Exception e) {
-			return "exception";
-		}
+	ProductModel newProduct = service.getProducts().get(service.getProducts().size() - 1);
+	
+	
+	model.addAttribute("newProduct", newProduct);
 
-	}
+	
+	
+	return "createProductResults";
+}
+catch(Exception e){
+	return "exception";
+}}
+	
+	
+	@PostMapping("/doUpdate")	
+	 public String doUpdate(@Valid ProductModel productModel, BindingResult bindingResult, Model model)
+	 {
+		 try {
+		 
 
+		//Check for validation order
+				if(bindingResult.hasErrors())
+				{
+					model.addAttribute("title", "Login Form");
+					//returns to welcome.html on error
+					return "updateProduct";
+				}
+		model.addAttribute("updateproduct", new ProductModel());
+		 
+		 return "updateproduct";}
+		 catch(Exception e)
+		 {
+				return "exception";
+		 }
+	 
+
+}
+	
+	
+	
+	
+
+	
+	
+	
+	
 }
