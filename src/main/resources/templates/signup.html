@@ -55,6 +55,9 @@
 
 						<!--submit button-->
 						<h2 colspan="2"><input type="submit" value="Confirm" ></h2>
+						<div th:if="${#fields.hasErrors('*')}">List of Errors</div>
+						<div th:each="err : ${#fields.errors('*')}">
+							<span style="color: red;" th:text="${err}" class=fieldError></span>
 		</form>
 
 	</div>

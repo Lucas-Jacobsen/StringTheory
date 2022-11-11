@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.Tymeleaf.org" xmlns:layout="http:www.ultraq.net.nz/thymeleaf/layouts"
+	layout:decorate="layouts/defaultTemplate">
+
+<head>
+	<meta charset="UTF-8">
+	<title>Update Product</title>
+</head>
+
+<body>
+
+	<!--gets the layout from the layout folder-->
+	<div layout:fragment="content">
+
+<!--FIX COMMENT-->
+		<!--new div that will hold the Create Guitar within it-->
+		<form action="#" th:action="@{doCreateResults}" th:object="${updateproduct}" method="post" >
+			<div class="container">
+				<div class="row align-items-start">
+					<div class="col" style="padding-top:50px;width:33%">
+
+
+
+					
+					<div class="col" style="padding-top:25px; width:33%">
+						<h1> Update Product</h1>
+						<br><br><br>
+
+						<h2>Product Name</h2>
+						<input type="text" th:field="*{productName}" name="productName">
+
+						<h2>Product Category</h2>
+						<input type="text" th:field="*{productCategory}" name="productCategory">
+
+						<h2>Product Description</h2>
+						<input type="text" th:field="*{productDescription}" name="productDescription">
+
+						<h2>Product Price</h2>
+						<input type="text" th:field="*{productPrice}" name="productPrice" style=margin-bottom:25px>
+
+						<!--submit button-->
+						<h2 colspan="2"><input type="submit" value="Confirm" ></h2>
+		</form>
+
+	</div>
+	<div class="col" style="padding-top:150px; width:33%">
+	</div>
+	</div>
+	</div>
+
+	</div>
+	</div>
+
+	</div>
+</body>
+
+</html>

@@ -14,13 +14,10 @@ import com.gcu.business.ProductsBusinessServiceInterface;
 
 import groovy.lang.Singleton;
 
-
 @Configuration
-public class SpringConfig 
-{
-	@Bean(name = "ProductsBusinessService", initMethod="init", destroyMethod="destroy")
-	public ProductsBusinessServiceInterface getProductsBusiness()
-	{
-		return new ProductsBusinessService(); 
+public class SpringConfig {
+	@Bean(name = "ProductsBusinessService", initMethod = "init", destroyMethod = "destroy")
+	public ProductsBusinessServiceInterface getProductsBusiness() {
+		return new ProductsBusinessService();
 	}
 }

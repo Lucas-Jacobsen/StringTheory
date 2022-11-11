@@ -13,20 +13,19 @@ import com.gcu.model.ProductModel;
 
 @RestController
 @RequestMapping("/service")
-public class ProductsRestService 
-{
+public class ProductsRestService {
 	@Autowired
 	ProductsBusinessServiceInterface service;
-	
-	@GetMapping(path="/getjson", produces= {MediaType.APPLICATION_JSON_VALUE})
-	public List<ProductModel> getProductssAsJson()
-	{
+
+	// maps to getjson and prints out the products in a json file to the webpage
+	@GetMapping(path = "/getjson", produces = { MediaType.APPLICATION_JSON_VALUE })
+	public List<ProductModel> getProductssAsJson() {
 		return service.getProducts();
 	}
-	
-	@GetMapping(path="/getxml", produces= {MediaType.APPLICATION_XML_VALUE})
-	public ProductList getProductsAsXml()
-	{
+
+	// maps to getxml and prints out the products to a xml page on the webpage
+	@GetMapping(path = "/getxml", produces = { MediaType.APPLICATION_XML_VALUE })
+	public ProductList getProductsAsXml() {
 		ProductList list = new ProductList();
 		list.setProducts(service.getProducts());
 		return list;

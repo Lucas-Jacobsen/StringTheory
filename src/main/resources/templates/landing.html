@@ -5,36 +5,36 @@
 <head>
 	<meta charset="UTF-8">
 	<title>CST-339 Spring Boot Activity Application</title>
-	
+
 </head>
 
 <body style=background-color:#F1f1f1>
-<!--gets the layout from the layout folder-->
+	<!--gets the layout from the layout folder-->
 	<div layout:fragment="content">
 
 
-<!--new div that will hold the login page within it-->
+		<!--new div that will hold the login page within it-->
 		<h2>Welcome to String Theory</h2>
-		 <div class="row justify-content-center">
-    <div class="col-2">
-      <form action="#" th:action="@{doProducts}" method="post">
-	
-		<!--submit button-->
-		<h2 colspan="2"><input type="submit" value="View Products"></h2>
-		</form>
-		
-    </div>
-    <div class="col-2">
-      <form action="#" th:action="@{doCreate}"  method="post">
-	
-		<!--submit button-->
-		<h2 colspan="2"><input type="submit" value="Create Products"></h2>
-		</form>
+		<div class="row justify-content-center">
+			<div class="col-2">
+				<form action="#" th:action="@{doProducts}" method="post">
 
-    </div>
-  </div>
-		
-		
+					<!--submit button-->
+					<h2 colspan="2"><input type="submit" value="View Products"></h2>
+				</form>
+
+			</div>
+			<div class="col-2">
+				<form action="#" th:action="@{doCreate}" method="post">
+
+					<!--submit button-->
+					<h2 colspan="2"><input type="submit" value="Create Products"></h2>
+				</form>
+
+			</div>
+		</div>
+
+
 	</div>
 </body>
 

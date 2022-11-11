@@ -82,15 +82,39 @@ public class LoginController
 			model.addAttribute("newCustomer", signupModel);
 			return "signupResults";
 		}
-		catch(Exception e){
-			return "signupResults";
-		}
+		catch(Exception e) {
+			return "exception";}
+	}
 		
 
-	}
+	
 	//login page when you enter the login button - take you to landing page
 	@PostMapping("/doLogin")
 	public String doLogin(@Valid LoginModel loginModel, BindingResult bindingResult, Model model, SignupModel signup)
+	{
+		try {
+		
+		//Check for validation order
+		if(bindingResult.hasErrors())
+		{
+			model.addAttribute("title", "Login Form");
+			//returns to welcome.html on error
+			return "welcome";
+		}
+		
+		security.authenticateLogin(loginModel.getUsername(), loginModel.getPassword());
+		
+
+		//returns orders.html on enter
+		//Change back to landing when done testing exception
+		return "landing";}
+		 catch(Exception e)
+		 {
+				return "exception";
+		 }
+	}	
+	@PostMapping("/error")
+	public String doLanding(@Valid LoginModel loginModel, BindingResult bindingResult, Model model, SignupModel signup)
 	{
 		try {
 		
@@ -173,7 +197,30 @@ public String doCreateResults(ProductModel productModel, Model model)
 }
 catch(Exception e){
 	return "exception";
-}
+}}
+	
+	
+	@PostMapping("/doUpdate")	
+	 public String doUpdate(@Valid ProductModel productModel, BindingResult bindingResult, Model model)
+	 {
+		 try {
+		 
+
+		//Check for validation order
+				if(bindingResult.hasErrors())
+				{
+					model.addAttribute("title", "Login Form");
+					//returns to welcome.html on error
+					return "updateProduct";
+				}
+		model.addAttribute("updateproduct", new ProductModel());
+		 
+		 return "updateproduct";}
+		 catch(Exception e)
+		 {
+				return "exception";
+		 }
+	 
 
 }
 	
