@@ -38,6 +38,23 @@ public class ProductsBusinessService implements ProductsBusinessServiceInterface
 		ProductModel pm = product;
 		return service.create(pm);
 	}
+	 
+	@Override
+	public ProductModel getProductByID(int id)
+	{
+		return service.findById(id);
+	}
+	
+	@Override
+	public boolean updateProduct(ProductModel t)
+	{
+		return service.update(t);
+	}
+	
+	public boolean deleteProducts(int id)
+	{
+		return service.delete(id);
+	}
 	
 }
 

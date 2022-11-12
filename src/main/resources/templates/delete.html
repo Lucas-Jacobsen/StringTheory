@@ -14,7 +14,7 @@
 
 <!--FIX COMMENT-->
 		<!--new div that will hold the Create Guitar within it-->
-		<form action="#" th:action="@{doUpdateResults}" th:object="${updateProduct}" method="post" >
+		<form action="#" th:action="@{doDeleteResults}" th:object="${deleteProduct}" method="post" >
 			<div class="container">
 				<div class="row align-items-start">
 					<div class="col" style="padding-top:50px;width:33%">
@@ -23,22 +23,12 @@
 
 					
 					<div class="col" style="padding-top:25px; width:33%">
-						<h1> Update Product</h1>
+						<h1> Delete Product</h1>
 						<br><br><br>
 						<h2> Product ID</h2>
 						<input type"text" th:field="*{productID}"  name="productID">
 
-						<h2>Product Name</h2>
-						<input type="text" th:field="*{productName}" name="productName">
-
-						<h2>Product Category</h2>
-						<input type="text" th:field="*{productCategory}" name="productCategory">
-
-						<h2>Product Description</h2>
-						<input type="text" th:field="*{productDescription}" name="productDescription">
-
-						<h2>Product Price</h2>
-						<input type="text" th:field="*{productPrice}" name="productPrice" style=margin-bottom:25px>
+						
 
 						<!--submit button-->
 						<h2 colspan="2"><input type="submit" value="Confirm" ></h2>
