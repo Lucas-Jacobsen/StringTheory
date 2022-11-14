@@ -14,6 +14,7 @@ import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestParam;
 
 import com.gcu.business.CustomerBusinessService;
 import com.gcu.business.ProductsBusinessService;
@@ -139,7 +140,7 @@ public class LoginController
 	
 	//To products page 
 	@PostMapping("/doProducts")
-	public String doProducts(ProductList productList, Model model )
+	public String doProducts(ProductList productList, Model model, @RequestParam(value="id", required =false)Integer Id)
 	{
 		try {
 				//Create products
@@ -148,6 +149,7 @@ public class LoginController
 				//Display orders view
 				model.addAttribute("title", "Our Products");
 				model.addAttribute("products", products);
+				model.addAttribute("EditID", Id);
 		return "orders";}
 		 catch(Exception e)
 		 {
@@ -201,11 +203,14 @@ catch(Exception e){
 	
 	
 	@PostMapping("/doUpdate")	
-	 public String doUpdate(@Valid ProductModel productModel, BindingResult bindingResult, Model model)
+	 public String doUpdate( ProductModel productModel, BindingResult bindingResult, Model model, Integer FLAG)
 	 {
-		 try {
+		// try {
 		 
-
+		
+		model.addAttribute("EditID", FLAG);
+		model.addAttribute("updateProduct", new ProductModel());
+			
 		//Check for validation order
 				if(bindingResult.hasErrors())
 				{
@@ -213,16 +218,46 @@ catch(Exception e){
 					//returns to welcome.html on error
 					return "updateProduct";
 				}
-		model.addAttribute("updateproduct", new ProductModel());
+				
 		 
-		 return "updateproduct";}
-		 catch(Exception e)
-		 {
-				return "exception";
-		 }
-	 
-
+		 return "updateproduct";
+		 //}
+		 //catch(Exception e)
+		 //{
+				//return "exception";
+		 //}
 }
+	@PostMapping("/doUpdateResults")
+	public String doUpdateResults(ProductModel productModel, BindingResult bindingResult, Model model)
+	{
+		model.addAttribute("updatedProduct", productModel);
+		
+		//ProductModel productToUpdate = service.getProductByID(2);
+		
+		service.updateProduct(productModel);
+		
+		return "updateProductResults";
+		
+	}
+	
+	@PostMapping("/doDelete")
+	public String doDelete(ProductModel productModel, BindingResult bindingResult, Model model)
+	{
+		
+		model.addAttribute("deleteProduct", productModel);
+
+		return "delete";
+		
+	}
+	
+	@PostMapping("/doDeleteResults")
+	public String doDeleteResults(ProductModel productModel, BindingResult bindingResult, Model model)
+	{
+		model.addAttribute("deleteResults", productModel.productID);
+		int deleteID = productModel.productID;
+		service.deleteProducts(deleteID);
+		return "deleteResults";
+	}
 	
 	
 	

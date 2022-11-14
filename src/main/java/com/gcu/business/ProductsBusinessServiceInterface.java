@@ -26,6 +26,20 @@ public interface ProductsBusinessServiceInterface
 	{
 		return false;
 	}
+	
+	
+	public default ProductModel getProductByID(int id)
+	{
+		return null;
+		
+	}
+	
+	
+	
+	public default boolean updateProduct(ProductModel t)
+	{
+		return false;
+	}
 	public void init();
 	
 	public void destroy();

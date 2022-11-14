@@ -65,8 +65,11 @@ public class CustomerDataService implements DataAccessInterface<SignupModel>
 		return false;
 	}
 
+	
+	
+
 	@Override
-	public boolean delete(SignupModel t) {
+	public boolean delete(int id) {
 		// TODO Auto-generated method stub
 		return false;
 	}

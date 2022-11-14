@@ -58,23 +58,27 @@
 	
 		
 	</div>
+		<!--<form action="#" value="${EditID}" th:action="@{doUpdate}" method="post">
+>>>>>>> branch 'main' of https://github.com/cfirnkoess1/CST-Milestone-339.git
 		<h5 style="text-align: center; white-space:nowrap; font-size:25px; font-weight:700; font-family: artibus slab;">Please enter the Id of a item that you would like to edit:</h3>
 		<label for="EditID">ID:</label>
-		<input type="text" id="EditID" name="ID" placeholder="Enter Here">
+		<input type="text" id="EditID" name="EditID" placeholder="Enter Here">
 		<br>
-		<br>
+		<br>-->
 		
 		<div class="row justify-content-center">
 			<div class="col-2">
-				<form action="#" th:action="@{doUpdate}" method="post">
+				
 
 					<!--submit button-->
 					<h2 colspan="2"><input type="submit" value="Update Product"></h2>
 				</form>
 
 			</div>
+			
+			
 			<div class="col-2">
-				<form action="#" th:action="@{doProducts}" method="post">
+				<form action="#" th:action="@{doDelete}" method="post">
 
 					<!--submit button-->
 					<h2 colspan="2"><input type="submit" value="Delete Product"></h2>
