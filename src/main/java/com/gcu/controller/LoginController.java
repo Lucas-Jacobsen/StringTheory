@@ -27,6 +27,11 @@ import com.gcu.model.ProductModel;
 import com.gcu.model.SignupModel;
 
 //controller for the first welcome page
+/**
+ * 
+ * @author lukej and CarsonF
+ *
+ */
 @Controller
 @RequestMapping("/login")
 public class LoginController
@@ -40,8 +45,12 @@ public class LoginController
 	@Autowired
 	private CustomerBusinessService customerService;
 	
-	
-	//second backslash comes after the first login so we can have a welcome page
+	/**
+	 * Get Mapping for project
+	 * @param model
+	 * model
+	 * @return string of exception or welcome
+	 */
 	@GetMapping("/")
 	public String display(Model model)
 	{
@@ -56,7 +65,13 @@ public class LoginController
 				return "exception";
 		 }
 	}
-	//sign up page for if you do not have an account
+
+	/**
+	 * sign up page for if you do not have an account
+	 * @param model
+	 * model
+	 * @return string of exception or signup
+	 */
 	@PostMapping("/doSignup")
 	public String doSignin(Model model)
 	{try {
@@ -70,7 +85,12 @@ public class LoginController
 			return "exception";
 	 }
 	}
-	
+	/**
+	 * sign up page for if you do not have an account
+	 * @param signupModel  sign
+	 * @param model model
+	 * @return string of exception or signupResults
+	 */
 	@PostMapping("/newCutomerResults")
 	public String doSignupResults(SignupModel signupModel, Model model)
 	{
@@ -88,8 +108,14 @@ public class LoginController
 	}
 		
 
-	
-	//login page when you enter the login button - take you to landing page
+	/**
+	 * login page when you enter the login button - take you to landing page
+	 * @param loginModel loginModel
+	 * @param bindingResult BindingResult
+	 * @param  model Model
+	 * @param  signup SignupModel
+	 * @return string of exception or welcome
+	 */
 	@PostMapping("/doLogin")
 	public String doLogin(@Valid LoginModel loginModel, BindingResult bindingResult, Model model, SignupModel signup)
 	{
@@ -114,6 +140,14 @@ public class LoginController
 				return "exception";
 		 }
 	}	
+	/**
+	 * Global Exception handling page
+	 * @param loginModel LoginModel
+	 * @param bindingResult BindingResult
+	 * @param model Model
+	 * @param signup SignupModel
+	 * @return string of exception, landing, or welcome
+	 */
 	@PostMapping("/error")
 	public String doLanding(@Valid LoginModel loginModel, BindingResult bindingResult, Model model, SignupModel signup)
 	{
@@ -138,7 +172,13 @@ public class LoginController
 		 }
 	}	
 	
-	//To products page 
+	/**
+	 * To Products Page
+	 * @param productList ProductList
+	 * @param model Model
+	 * @param Id Integer
+	 * @return string of exception or orders
+	 */
 	@PostMapping("/doProducts")
 	public String doProducts(ProductList productList, Model model, @RequestParam(value="id", required =false)Integer Id)
 	{
@@ -156,7 +196,13 @@ public class LoginController
 				return "exception";
 		 }
 	}
-//Take user to createProduct page
+	/**
+	 * To create a new product
+	 * @param productModel ProductModel
+	 * @param  bindingResult BindingResult 
+	 * @param  model Model
+	 * @return createProduct or exception
+	 */
  @PostMapping("/doCreate")	
  public String doCreate(@Valid ProductModel productModel, BindingResult bindingResult, Model model)
  {
@@ -179,6 +225,12 @@ public class LoginController
 	 }
  }
  
+ /**
+	 * To Create Results page
+	 * @param productModel ProductModel
+	 * @param model Model
+	 * @return createProductResults or exception
+	 */
 @PostMapping("/doCreateResults")
 public String doCreateResults(ProductModel productModel, Model model)
 {
@@ -201,11 +253,18 @@ catch(Exception e){
 	return "exception";
 }}
 	
-	
+/**
+ * To update product page
+ * @param productModel ProductModel
+ * @param bindingResult BidnigResult
+ * @param model Model
+ * @param FLAG Integer
+ * @return updateProduct or exception
+ */
 	@PostMapping("/doUpdate")	
 	 public String doUpdate( ProductModel productModel, BindingResult bindingResult, Model model, Integer FLAG)
 	 {
-		// try {
+		 try {
 		 
 		
 		model.addAttribute("EditID", FLAG);
@@ -221,12 +280,20 @@ catch(Exception e){
 				
 		 
 		 return "updateproduct";
-		 //}
-		 //catch(Exception e)
-		 //{
-				//return "exception";
-		 //}
+		 }
+		 catch(Exception e)
+		 {
+				return "exception";
+		 }
 }
+	
+	/**
+	 * To updateProductResult
+	 * @param productModel ProductModel
+	 * @param bindingResult BindingResult
+	 * @param model Model
+	 * @return updateProductResults or exception
+	 */
 	@PostMapping("/doUpdateResults")
 	public String doUpdateResults(ProductModel productModel, BindingResult bindingResult, Model model)
 	{
@@ -239,7 +306,13 @@ catch(Exception e){
 		return "updateProductResults";
 		
 	}
-	
+	/**
+	 * To Delete product page
+	 * @param productModel ProductModel
+	 * @param bindingResult BindingResult
+	 * @param model Model
+	 * @return delete or exception
+	 */
 	@PostMapping("/doDelete")
 	public String doDelete(ProductModel productModel, BindingResult bindingResult, Model model)
 	{
@@ -249,7 +322,13 @@ catch(Exception e){
 		return "delete";
 		
 	}
-	
+	/**
+	 * To delete product results page
+	 * @param productModel ProductModel
+	 * @param bindingResult BindingResult 
+	 * @param model Model
+	 * @return deleteResults or 
+	 */
 	@PostMapping("/doDeleteResults")
 	public String doDeleteResults(ProductModel productModel, BindingResult bindingResult, Model model)
 	{
