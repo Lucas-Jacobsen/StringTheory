@@ -7,22 +7,16 @@ import com.gcu.data.DataAccessInterface;
 import com.gcu.model.SignupModel;
 
 @Service
-public class CustomerBusinessService implements CustomerBusinessServiceInterface
-{
-	
-	
+public class CustomerBusinessService implements CustomerBusinessServiceInterface {
+
 	DataAccessInterface<SignupModel> customerService;
-	
+
 	@Override
-	public boolean getNewUser(SignupModel signup)
-	{
-		
+	public boolean getNewUser(SignupModel signup) {
+
 		SignupModel sm = signup;
-		
+
 		return customerService.create(sm);
 	}
 
-	
-	
 }
-
