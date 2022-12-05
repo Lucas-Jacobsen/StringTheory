@@ -110,6 +110,9 @@ public class LoginController {
 	 * @param signup        SignupModel
 	 * @return string of exception or welcome
 	 */
+	
+	public String password;
+	public String username;
 	@PostMapping("/doLogin")
 	public String doLogin(@Valid LoginModel loginModel, BindingResult bindingResult, Model model, SignupModel signup) {
 		try {
@@ -122,7 +125,8 @@ public class LoginController {
 			}
 
 			security.authenticateLogin(loginModel.getUsername(), loginModel.getPassword());
-
+			password = loginModel.getPassword();
+			username = loginModel.getUsername();
 			// returns orders.html on enter
 			// Change back to landing when done testing exception
 			return "landing";
@@ -131,6 +135,7 @@ public class LoginController {
 		}
 	}
 
+	
 	/**
 	 * Global Exception handling page
 	 * 
@@ -140,7 +145,7 @@ public class LoginController {
 	 * @param signup        SignupModel
 	 * @return string of exception, landing, or welcome
 	 */
-	@PostMapping("/error")
+	@PostMapping("/doLogin/error")
 	public String doLanding(@Valid LoginModel loginModel, BindingResult bindingResult, Model model,
 			SignupModel signup) {
 		try {
