@@ -29,7 +29,7 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter
     @Autowired
     public void configAuthentication (AuthenticationManagerBuilder auth) throws Exception 
     { 
-        auth.jdbcAuthentication().passwordEncoder(new BCryptPasswordEncoder()) //hashed pass
+        auth.jdbcAuthentication().passwordEncoder(new BCryptPasswordEncoder()) 
             .dataSource(dataSource)    //database connection
             .usersByUsernameQuery("SELECT USERNAME, PASSWORD, enabled FROM credentials WHERE USERNAME = ?")
             .authoritiesByUsernameQuery("select username, role from credentials where username=?");
@@ -53,6 +53,9 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter
          .defaultSuccessUrl("/login/doProducts", true)
          .and()
          .logout()
+         .logoutUrl("/logout")
+			.invalidateHttpSession(true)
+			.clearAuthentication(true)
          .permitAll()
 		 .and()
 		  .exceptionHandling().accessDeniedPage("/login/");
