@@ -15,7 +15,8 @@ import com.gcu.business.ProductsBusinessServiceInterface;
 import groovy.lang.Singleton;
 
 @Configuration
-public class SpringConfig {
+public class SpringConfig 
+{
 	@Bean(name = "ProductsBusinessService", initMethod = "init", destroyMethod = "destroy")
 	public ProductsBusinessServiceInterface getProductsBusiness() {
 		return new ProductsBusinessService();
