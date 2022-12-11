@@ -1,10 +1,12 @@
 package com.gcu.business;
 
+import java.util.ArrayList;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.MediaType;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
@@ -30,4 +32,14 @@ public class ProductsRestService {
 		list.setProducts(service.getProducts());
 		return list;
 	}
+	
+	 @GetMapping(path = "/getproduct/{productId}", produces = { MediaType.APPLICATION_JSON_VALUE })
+     public List<ProductModel> getOneProductAsJSON(@PathVariable("productId") int productId) {
+		 
+		 List<ProductModel> one = new ArrayList<ProductModel>();
+		 
+		 one.add(service.getProducts().get(productId - 1));
+         return one;
+     }
+	
 }

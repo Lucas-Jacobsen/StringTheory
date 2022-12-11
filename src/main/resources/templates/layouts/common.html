@@ -37,14 +37,15 @@
 									<a class="nav-link" href="#">About</a>
 								</li>
 								<li class="nav-item">
-									<a class="nav-link" href="#">Cart</a>
+									<form th:action="@{/logout}" method="post">
+			                		<input type="submit" value="Log out">
 								</li>
 							</ul>
 						</div>
 					</nav>
 				</div>
 			</nav>
-
+ 
 			<!-- Page Title and Logo -->
 			<h2 th:text="${title}">Default Message Text</h2><br />
 			<img th:src="@{/images/String.png}" style=height:200px; /><br /><br />

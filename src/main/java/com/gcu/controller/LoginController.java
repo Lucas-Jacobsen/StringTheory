@@ -43,7 +43,6 @@ public class LoginController {
 	@SuppressWarnings("unused")
 	@Autowired
 	private CustomerBusinessService customerService;
-
 	/**
 	 * Get Mapping for project
 	 * 
@@ -95,9 +94,9 @@ public class LoginController {
 			customerService.getNewUser(signupModel);
 
 			model.addAttribute("newCustomer", signupModel);
-			return "signupResults";
+			return "/";
 		} catch (Exception e) {
-			return "exception";
+			return "welcome";
 		}
 	}
 
@@ -110,10 +109,7 @@ public class LoginController {
 	 * @param signup        SignupModel
 	 * @return string of exception or welcome
 	 */
-	
-	public String password;
-	public String username;
-	@PostMapping("/doLogin")
+	@GetMapping("/doLogin")
 	public String doLogin(@Valid LoginModel loginModel, BindingResult bindingResult, Model model, SignupModel signup) {
 		try {
 
@@ -123,11 +119,10 @@ public class LoginController {
 				// returns to welcome.html on error
 				return "welcome";
 			}
-
+			System.out.println("In Do Login");
 			security.authenticateLogin(loginModel.getUsername(), loginModel.getPassword());
-			password = loginModel.getPassword();
-			username = loginModel.getUsername();
-			// returns orders.html on enter
+
+			// returns landing.html on enter
 			// Change back to landing when done testing exception
 			return "landing";
 		} catch (Exception e) {
@@ -135,7 +130,6 @@ public class LoginController {
 		}
 	}
 
-	
 	/**
 	 * Global Exception handling page
 	 * 
@@ -145,13 +139,14 @@ public class LoginController {
 	 * @param signup        SignupModel
 	 * @return string of exception, landing, or welcome
 	 */
-	@PostMapping("/doLogin/error")
+	@PostMapping("/error")
 	public String doLanding(@Valid LoginModel loginModel, BindingResult bindingResult, Model model,
 			SignupModel signup) {
 		try {
 
 			// Check for validation order
 			if (bindingResult.hasErrors()) {
+
 				model.addAttribute("title", "Login Form");
 				// returns to welcome.html on error
 				return "welcome";
@@ -167,57 +162,7 @@ public class LoginController {
 		}
 	}
 
-	/**
-	 * To Products Page
-	 * 
-	 * @param productList ProductList
-	 * @param model       Model
-	 * @param Id          Integer
-	 * @return string of exception or orders
-	 */
-	@PostMapping("/doProducts")
-	public String doProducts(ProductList productList, Model model,
-			@RequestParam(value = "id", required = false) Integer Id) {
-		try {
-			// Create products
-			List<ProductModel> products = service.getProducts();
-
-			// Display orders view
-			model.addAttribute("title", "Our Products");
-			model.addAttribute("products", products);
-			model.addAttribute("EditID", Id);
-			return "orders";
-		} catch (Exception e) {
-			return "exception";
-		}
-	}
-
-	/**
-	 * To create a new product
-	 * 
-	 * @param productModel  ProductModel
-	 * @param bindingResult BindingResult
-	 * @param model         Model
-	 * @return createProduct or exception
-	 */
-	@PostMapping("/doCreate")
-	public String doCreate(@Valid ProductModel productModel, BindingResult bindingResult, Model model) {
-		try {
-
-			// Check for validation order
-			if (bindingResult.hasErrors()) {
-				model.addAttribute("title", "Login Form");
-				// returns to welcome.html on error
-				return "createProduct";
-			}
-			model.addAttribute("createProduct", new ProductModel());
-
-			return "createProduct";
-		} catch (Exception e) {
-			return "exception";
-		}
-	}
-
+	
 	/**
 	 * To Create Results page
 	 * 

@@ -29,32 +29,37 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter
     @Autowired
     public void configAuthentication (AuthenticationManagerBuilder auth) throws Exception 
     { 
-        auth.jdbcAuthentication().passwordEncoder(new BCryptPasswordEncoder()) //hashed pass
+        auth.jdbcAuthentication().passwordEncoder(new BCryptPasswordEncoder()) 
             .dataSource(dataSource)    //database connection
-            .usersByUsernameQuery("SELECT USERNAME, PASSWORD, enabled FROM users WHERE USERNAME = ?")
+            .usersByUsernameQuery("SELECT USERNAME, PASSWORD, enabled FROM credentials WHERE USERNAME = ?")
             .authoritiesByUsernameQuery("select username, role from credentials where username=?");
        
 
-        System.out.println("==========>" +  new BCryptPasswordEncoder().encode("test"));
+        System.out.println("==========>" +  new BCryptPasswordEncoder().encode("Jacobsen"));
     }
     @Override
     protected void configure(HttpSecurity http) throws Exception 
     {
     	 http.csrf().disable()
     	 .authorizeRequests()
-    	 .antMatchers("/","/newCustomerResults","/images/**").permitAll()
+    	 .antMatchers("/", "/doSignup","/service/getjson","/service/getproduct","/doSignupResults","/images/**").permitAll() //Protected 
          .anyRequest().authenticated()
          .and()
          .formLogin()
          .loginPage("/login/")
-		.usernameParameter("username")
+		 .usernameParameter("username")
          .passwordParameter("password")
          .permitAll()
-         .defaultSuccessUrl("/login/doLogin", true)
+         .defaultSuccessUrl("/login/doProducts", true)
          .and()
-         .logout().permitAll(); 
+         .logout()
+         .logoutUrl("/logout")
+			.invalidateHttpSession(true)
+			.clearAuthentication(true)
+         .permitAll()
+		 .and()
+		  .exceptionHandling().accessDeniedPage("/login/");
     }
-    
 
   
 }
