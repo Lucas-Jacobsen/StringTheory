@@ -1,4 +1,4 @@
-#String Theory
+String Theory
 
 Enterprise-Class N-Layer Inventory Management Application: 
 •	Utilizes Spring MVC, Spring Core (Data and Business Services, Ioc and DI), Spring Data JDBC, Spring REST Services, Spring Security, Bootstrap, Thymeleaf, Embedded Tomcat, REST API, and MySQL to create a full functioning Inventory web-app. 
